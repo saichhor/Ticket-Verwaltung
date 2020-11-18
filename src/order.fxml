@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.CharmListView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <Label layoutX="24.0" layoutY="24.0" prefHeight="17.0" prefWidth="172.0" text="Ihre Aufträge:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
-      <Button layoutX="24.0" layoutY="330.0" mnemonicParsing="false" text="erstellen" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="330.0" />
-      <ListView layoutX="24.0" layoutY="141.0" prefHeight="147.0" prefWidth="539.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="141.0" />
-      <CharmListView layoutX="24.0" layoutY="50.0" prefHeight="25.0" prefWidth="172.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="50.0" />
-      <CharmListView layoutX="24.0" layoutY="93.0" prefHeight="25.0" prefWidth="172.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="93.0" />
+      <Label layoutX="13.0" layoutY="24.0" prefHeight="17.0" prefWidth="172.0" text="Auftrag" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="24.0" />
+      <Button layoutX="499.0" layoutY="281.0" mnemonicParsing="false" text="Speichern" AnchorPane.leftAnchor="499.0" AnchorPane.topAnchor="281.0" />
+      <TextField layoutX="99.0" layoutY="20.0" prefHeight="25.0" prefWidth="469.0" />
+      <Label layoutX="13.0" layoutY="58.0" prefHeight="17.0" prefWidth="172.0" text="Beschreibung" />
+      <TextArea layoutX="99.0" layoutY="58.0" prefHeight="200.0" prefWidth="469.0" />
+      <Button layoutX="413.0" layoutY="281.0" mnemonicParsing="false" text="Abbrechen" />
    </children>
 </AnchorPane>

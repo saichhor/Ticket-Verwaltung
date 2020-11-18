@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.DropdownButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane prefHeight="102.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <Label layoutX="24.0" layoutY="24.0" prefHeight="17.0" prefWidth="172.0" text="Hier der Status Ihres Tickets:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
-      <Button layoutX="24.0" layoutY="99.0" mnemonicParsing="false" text="speichern" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="99.0" />
-      <DropdownButton layoutX="34.0" layoutY="64.0" prefHeight="17.0" prefWidth="71.0" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="64.0">
-         <items>
-            <MenuItem text="offen" />
-            <MenuItem text="in Arbeit" />
-            <MenuItem text="im Test" />
-         </items>
-      </DropdownButton>
+      <Label layoutX="24.0" layoutY="24.0" prefHeight="17.0" prefWidth="172.0" text="Status" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
+      <Button layoutX="424.0" layoutY="360.0" mnemonicParsing="false" text="Abbrechen" AnchorPane.bottomAnchor="14.666666666666686" AnchorPane.rightAnchor="102.0" />
+      <TextField layoutX="70.0" layoutY="20.0" prefHeight="25.0" prefWidth="515.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="20.0" />
+      <Button layoutX="515.0" layoutY="360.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="14.666666666666668" AnchorPane.rightAnchor="16.33333333333333" />
    </children>
 </AnchorPane>
