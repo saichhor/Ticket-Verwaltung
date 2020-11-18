@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.DropdownButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Label layoutX="24.0" layoutY="24.0" prefHeight="17.0" prefWidth="189.0" text="Geben Sie die Priorität ein ein:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0" />
+      <Button layoutX="24.0" layoutY="132.0" mnemonicParsing="false" text="speichern" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="132.0" />
+      <DropdownButton layoutX="28.0" layoutY="66.0" prefHeight="17.0" prefWidth="71.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="66.0">
+         <items>
+            <MenuItem text="hoch" />
+            <MenuItem text="niedrig" />
+            <MenuItem text="sofort" />
+         </items>
+      </DropdownButton>
+   </children>
+</AnchorPane>
