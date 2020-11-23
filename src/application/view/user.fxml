@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="370.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane prefHeight="370.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.Controller">
    <children>
       <TextField layoutX="23.0" layoutY="27.0" prefHeight="25.0" prefWidth="536.0" promptText="Anrede..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="27.0" />
       <Button layoutX="399.0" layoutY="336.0" mnemonicParsing="false" text="Abbrechen" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="336.0" />
