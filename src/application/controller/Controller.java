@@ -1,5 +1,18 @@
 package application.controller;
 
+import application.MyFXMLLoader;
+import javafx.event.ActionEvent;
+
 public class Controller {
-// das ist ein test
+
+
+    public void editStatiClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/status.fxml", "Stati bearbeiten");
+    }
+
+    public void editPriorityClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/priority.fxml", "Prioritäten bearbeiten");
+    }
 }
