@@ -28,4 +28,17 @@ public class StatusController {
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
     }
+
+    public void priorityButtonClicked(ActionEvent actionEvent) {
+    }
+
+    public void statusButtonClicked(ActionEvent actionEvent) {
+    }
+
+    public void editStatiClicked(ActionEvent actionEvent) {
+    }
+
+    public void editPriorityClicked(ActionEvent actionEvent) {
+
+    }
 }
