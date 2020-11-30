@@ -14,12 +14,19 @@ public class Controller {
 
 
     public void editStatiClicked(ActionEvent actionEvent) {
-        MyFXMLLoader loader = new MyFXMLLoader();
-        loader.loadFXML("view/status.fxml", "Stati bearbeiten");
     }
 
     public void editPriorityClicked(ActionEvent actionEvent) {
+    }
+
+
+    public void priorityButtonClicked(ActionEvent actionEvent) {
         MyFXMLLoader loader = new MyFXMLLoader();
         loader.loadFXML("view/priority.fxml", "Prioritäten bearbeiten");
+    }
+
+    public void statusButtonClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/status.fxml", "Stati bearbeiten");
     }
 }
