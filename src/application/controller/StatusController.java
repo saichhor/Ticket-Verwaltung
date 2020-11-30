@@ -6,24 +6,22 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-import java.io.FileReader;
-import java.io.Reader;
-
 public class StatusController {
     public TextField statusTextField;
     public ListView<Status> statusListView;
 
+    private Status selectedItem = null;
 
     public void initialize() throws Exception{
-        StatusReader r = new StatusReader();
-
-        FileReader reader = new FileReader("stati.csv");
+        statusListView.setItems(Status.readFile("stati.csv"));
     }
 
     public void ListViewclicked(MouseEvent mouseEvent) {
-        //statusTextField.setText(statusListView.getSelectionModel().getSelectedItems().);
-        //asd
+        Status s = statusListView.getSelectionModel().getSelectedItem();
 
+        if (s != null) {
+            selectedItem = s;
+        }
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
