@@ -14,4 +14,14 @@ public class Controller {
         MyFXMLLoader loader = new MyFXMLLoader();
         loader.loadFXML("view/status.fxml", "Stati bearbeiten");
     }
+
+    public void userButtonClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/user.fxml", "User bearbeiten");
+    }
+
+    public void departmentButtonClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/department.fxml", "Department bearbeiten");
+    }
 }
