@@ -2,6 +2,7 @@ package application.controller;
 
 import application.model.Status;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -9,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 public class StatusController {
     public TextField statusTextField;
     public ListView<Status> statusListView;
+    public Button priorityButton;
+    public Button statusButton;
 
     private Status selectedItem = null;
 

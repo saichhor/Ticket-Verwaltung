@@ -15,10 +15,14 @@ import javax.swing.*;
 
 public class PriorityController {
 
+    public Button cancelButton;
+
     public void saveButtonClicked(ActionEvent actionEvent) {
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
 }
