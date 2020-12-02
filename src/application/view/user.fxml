@@ -5,10 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="370.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.Controller">
+<AnchorPane prefHeight="370.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.UserController">
    <children>
       <TextField layoutX="23.0" layoutY="27.0" prefHeight="25.0" prefWidth="536.0" promptText="Anrede..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="27.0" />
-      <Button layoutX="399.0" layoutY="336.0" mnemonicParsing="false" text="Abbrechen" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="336.0" />
+      <Button fx:id="cancelButton" layoutX="399.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Abbrechen" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="336.0" />
       <Button layoutX="491.0" layoutY="336.0" mnemonicParsing="false" text="Speichern" AnchorPane.leftAnchor="491.0" AnchorPane.topAnchor="336.0" />
       <TextField layoutX="23.0" layoutY="62.0" prefHeight="25.0" prefWidth="536.0" promptText="Name..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="62.0" />
       <TextField layoutX="25.0" layoutY="99.0" prefHeight="25.0" prefWidth="536.0" promptText="Straße...." AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="99.0" />
