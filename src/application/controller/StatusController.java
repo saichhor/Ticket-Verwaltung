@@ -6,12 +6,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class StatusController {
-    public TextField statusTextField;
+    public TextField statusNummerTextField;
     public ListView<Status> statusListView;
     public Button priorityButton;
     public Button statusButton;
+    public Button cancelButton;
+    public TextField statusBeschreibungTextField1;
 
     private Status selectedItem = null;
 
@@ -25,9 +28,14 @@ public class StatusController {
         if (s != null) {
             selectedItem = s;
         }
+
+        statusNummerTextField.setText(statusListView.getSelectionModel().getSelectedItem().StatusNummer);
+        statusBeschreibungTextField1.setText(statusListView.getSelectionModel().getSelectedItem().Status1);
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     public void priorityButtonClicked(ActionEvent actionEvent) {
