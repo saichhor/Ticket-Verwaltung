@@ -38,16 +38,10 @@ public class StatusController {
         stage.close();
     }
 
-    public void priorityButtonClicked(ActionEvent actionEvent) {
-    }
-
     public void statusButtonClicked(ActionEvent actionEvent) {
     }
 
     public void editStatiClicked(ActionEvent actionEvent) {
     }
 
-    public void editPriorityClicked(ActionEvent actionEvent) {
-
-    }
 }

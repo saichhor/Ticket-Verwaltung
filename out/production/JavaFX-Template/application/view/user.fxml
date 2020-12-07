@@ -5,16 +5,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="370.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.Controller">
+<AnchorPane prefHeight="370.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.UserController">
    <children>
-      <TextField layoutX="23.0" layoutY="27.0" prefHeight="25.0" prefWidth="536.0" promptText="Anrede..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="27.0" />
-      <Button layoutX="399.0" layoutY="336.0" mnemonicParsing="false" text="Abbrechen" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="336.0" />
+      <TextField fx:id="userTitelTextField" layoutX="23.0" layoutY="27.0" prefHeight="25.0" prefWidth="536.0" promptText="Titel..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="27.0" />
+      <Button fx:id="cancelButton" layoutX="399.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Abbrechen" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="336.0" />
       <Button layoutX="491.0" layoutY="336.0" mnemonicParsing="false" text="Speichern" AnchorPane.leftAnchor="491.0" AnchorPane.topAnchor="336.0" />
-      <TextField layoutX="23.0" layoutY="62.0" prefHeight="25.0" prefWidth="536.0" promptText="Name..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="62.0" />
-      <TextField layoutX="25.0" layoutY="99.0" prefHeight="25.0" prefWidth="536.0" promptText="Straße...." AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="99.0" />
-      <TextField layoutX="25.0" layoutY="133.0" prefHeight="25.0" prefWidth="536.0" promptText="PLZ...." AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="133.0" />
-      <TextField layoutX="25.0" layoutY="166.0" prefHeight="25.0" prefWidth="536.0" promptText="Stadt..." AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="166.0" />
-      <TextField layoutX="23.0" layoutY="200.0" prefHeight="25.0" prefWidth="536.0" promptText="Land..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="200.0" />
-      <ComboBox layoutX="25.0" layoutY="236.0" prefHeight="25.0" prefWidth="536.0" promptText="Abteilung" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="236.0" />
+      <TextField fx:id="userVornameTextField" layoutX="23.0" layoutY="62.0" prefHeight="25.0" prefWidth="536.0" promptText="Vorname..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="62.0" />
+      <TextField fx:id="userStrasseTextField" layoutX="23.0" layoutY="129.0" prefHeight="25.0" prefWidth="536.0" promptText="Straße...." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="129.0" />
+      <TextField fx:id="userPLZTextField" layoutX="23.0" layoutY="165.0" prefHeight="25.0" prefWidth="536.0" promptText="PLZ...." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="165.0" />
+      <TextField fx:id="userStadtTextField" layoutX="23.0" layoutY="198.0" prefHeight="25.0" prefWidth="536.0" promptText="Stadt..." AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="198.0" />
+      <ComboBox layoutX="25.0" layoutY="283.0" prefHeight="25.0" prefWidth="536.0" promptText="Abteilung" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="283.0" />
+      <TextField fx:id="userNachnameTextField" layoutX="23.0" layoutY="97.0" prefHeight="25.0" prefWidth="536.0" promptText="Nachname..." />
+      <TextField fx:id="userAbteilungTextField" layoutX="23.0" layoutY="232.0" prefHeight="25.0" prefWidth="536.0" promptText="Abteilung..." />
    </children>
 </AnchorPane>

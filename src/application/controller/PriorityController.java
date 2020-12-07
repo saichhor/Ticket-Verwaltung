@@ -1,23 +1,31 @@
 package application.controller;
 
-import application.MyFXMLLoader;
-import javafx.application.Platform;
+import application.model.Priority;
 import javafx.event.ActionEvent;
 
-import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import javax.swing.*;
 
 
 public class PriorityController {
 
     public Button cancelButton;
+    public ListView<Priority> statusListView;
+    public TextField priorityField;
+
+    private Priority selectedItem = null;
 
     public void saveButtonClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void initialize() throws Exception{
+        statusListView.toString();
+
+        statusListView.setItems(Priority.readFile("priorities.csv"));
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
@@ -25,4 +33,13 @@ public class PriorityController {
         stage.close();
     }
 
+    public void listViewCLicked(MouseEvent mouseEvent) {
+        Priority priority = statusListView.getSelectionModel().getSelectedItem();
+
+        if (priority != null) {
+            selectedItem = priority;
+        }
+
+        priorityField.setText((statusListView.getSelectionModel().getSelectedItem()).Priority1);
+    }
 }
