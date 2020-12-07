@@ -42,4 +42,8 @@ public class Priority {
         return list;
     }
 
+    @Override
+    public String toString() {
+        return Priority1;
+    }
 }
