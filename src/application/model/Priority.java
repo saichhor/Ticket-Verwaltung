@@ -10,8 +10,8 @@ import java.io.IOException;
 
 public class Priority {
 
-    public String Priority1;
-    public String PriorityNumber;
+    public String Priority;
+
 
 
     public static ObservableList<Priority> readFile(String filename){
@@ -29,8 +29,8 @@ public class Priority {
                     s = s.replace("\"", "");
                     String[] words = s.split(";");
                     Priority a = new Priority();
-                    a.Priority1 = words[0];
-                    a.PriorityNumber = words[1];
+                    a.Priority = words[0];
+                    a.Priority = words[1];
                     list.add(a);
                 }
             } finally {
@@ -44,6 +44,6 @@ public class Priority {
 
     @Override
     public String toString() {
-        return Priority1;
+        return Priority;
     }
 }
