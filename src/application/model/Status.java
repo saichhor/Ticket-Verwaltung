@@ -14,6 +14,7 @@ public class Status {
     public String StatusNummer;
 
 
+
     public static ObservableList<Status> readFile(String filename){
         return readFile(new File(filename));
     }
