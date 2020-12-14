@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.Controller">
+<AnchorPane prefHeight="404.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TicketController">
    <children>
       <Label layoutX="24.0" layoutY="268.0" prefHeight="17.0" prefWidth="172.0" text="Auftrag" AnchorPane.bottomAnchor="114.66666666666667" AnchorPane.leftAnchor="24.0" />
       <TextField layoutX="24.0" layoutY="14.0" prefHeight="25.0" prefWidth="556.0" promptText="Name" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0" />

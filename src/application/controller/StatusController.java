@@ -18,7 +18,7 @@ public class StatusController {
 
     private Status selectedItem = null;
 
-    public void initialize() throws Exception{
+    public void initialize() {
         statusListView.setItems(Status.readFile("stati.csv"));
     }
 
