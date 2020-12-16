@@ -15,6 +15,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class Controller {
 
+    private  TicketController active = null;
+
     public ListView<Ticket> ticketListView;
     public AnchorPane contentPane;
     //neue Felder
@@ -55,10 +57,47 @@ public class Controller {
     public void ticketListViewClicked(MouseEvent mouseEvent) {
         MyFXMLLoader loader = new MyFXMLLoader();
         Parent root = loader.loadFXML("view/ticket.fxml");
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setTopAnchor(root, 0.0);
+        AnchorPane.setLeftAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
+
         contentPane.getChildren().add(root);
 
         TicketController controller = (TicketController) loader.getController();
         controller.setTicket(ticketListView.getSelectionModel().getSelectedItem());
     }
+
+    public void newClicked(ActionEvent actionEvent) {
+
+        MyFXMLLoader loader = new MyFXMLLoader();
+        Parent root = loader.loadFXML("view/ticket.fxml");
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setTopAnchor(root, 0.0);
+        AnchorPane.setLeftAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
+
+        contentPane.getChildren().add(root);
+
+         active = (TicketController) loader.getController();
+        active.setTicket(null);
+    }
+
+    public void deleteClicked(ActionEvent actionEvent) {
+        //laden des Tickets
+        // Entfernen aus ListView
+        //Datei aktualisieren
+
+
+    }
+
+
+    public void saveClicked(ActionEvent actionEvent) {
+        //Wenn Ticket neu -> laden des Ticktes und hinzufügen zur Liste
+        //Datei aktualisieren
+    }
+
+
+
 
 }

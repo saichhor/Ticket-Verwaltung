@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 
 public class TicketController {
 
+    private Ticket ticket;
     public TextField titelTextField;
     public TextArea commentTextField;
     public ComboBox<Status> statusComboBox;
@@ -17,24 +18,25 @@ public class TicketController {
     public void setTicket(Ticket t) {
         // zeige t.name im  entsprechenden TextField an.
 
+        this.ticket = t;
         titelTextField.setText(t.Name);
         commentTextField.setText(t.Beschreibung);
-
-        statusComboBox.getSelectionModel().select(Integer.parseInt(t.Status));
         statusComboBox.setItems(Status.readFile("stati.csv"));
+        priorityComboBox.setItems(Priority.readFile("priorities.csv"));
 
-        priorityComboBox.getSelectionModel().select(Integer.parseInt(t.Priorität));
 
+        for (Status s : statusComboBox.getItems()){
+            //if(s.StatusNummer == t.Status.StatusNummer)
+        }
 
     }
+    public Ticket getTicket(){
+        /**
+         * aktualisieren der Ticket -Daten
+         */
+        ticket.Name = titelTextField.getText();
 
-    @Override
-    public String toString() {
-        return "TicketController{" +
-                "titelTextField=" + titelTextField +
-                ", commentTextField=" + commentTextField +
-                ", statusComboBox=" + statusComboBox +
-                ", priorityComboBox=" + priorityComboBox +
-                '}';
+        return ticket;
     }
+
 }
