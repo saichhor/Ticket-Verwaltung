@@ -25,11 +25,9 @@ public class TicketController {
         priorityComboBox.setItems(Priority.readFile("priorities.csv"));
 
 
-        for (Status s : statusComboBox.getItems()){
-            //if(s.StatusNummer == t.Status.StatusNummer)
+
         }
 
-    }
     public Ticket getTicket(){
         /**
          * aktualisieren der Ticket -Daten

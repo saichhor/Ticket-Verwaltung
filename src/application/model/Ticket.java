@@ -47,7 +47,12 @@ public class Ticket {
         return list;
     }
 
-
+    @Override
+    public String toString() {
+        return Name;
+    }
 }
+
+
 
 
