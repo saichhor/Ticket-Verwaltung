@@ -40,6 +40,6 @@ public class PriorityController {
             selectedItem = priority;
         }
 
-        priorityField.setText((statusListView.getSelectionModel().getSelectedItem()).Priority);
+        priorityField.setText((statusListView.getSelectionModel().getSelectedItem()).priorityId);
     }
 }

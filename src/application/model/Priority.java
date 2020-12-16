@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Priority {
 
-    public String Priority;
+    public String priorityId;
 
 
 
@@ -29,8 +29,8 @@ public class Priority {
                     s = s.replace("\"", "");
                     String[] words = s.split(";");
                     Priority a = new Priority();
-                    a.Priority = words[0];
-                    a.Priority = words[1];
+                    a.priorityId = words[0];
+                    a.priorityId = words[1];
                     list.add(a);
                 }
             } finally {
@@ -44,6 +44,6 @@ public class Priority {
 
     @Override
     public String toString() {
-        return Priority;
+        return priorityId;
     }
 }
