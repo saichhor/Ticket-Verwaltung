@@ -19,14 +19,23 @@ public class TicketController {
         // zeige t.name im  entsprechenden TextField an.
 
         this.ticket = t;
-        titelTextField.setText(t.Name);
-        commentTextField.setText(t.Beschreibung);
+        titelTextField.setText(t.name);
+        commentTextField.setText(t.beschreibung);
         statusComboBox.setItems(Status.readFile("stati.csv"));
         priorityComboBox.setItems(Priority.readFile("priorities.csv"));
 
 
         for (Status s : statusComboBox.getItems()){
-            //if(s.StatusNummer == t.Status.StatusNummer)
+            if(s.StatusID == t.status.StatusID){
+                statusComboBox.getSelectionModel().select(s);
+                break;
+            }
+        }
+        for(Priority p : priorityComboBox.getItems()){
+            if(p.priorityId == t.prioritaet.priorityId){
+                priorityComboBox.getSelectionModel().select(p);
+                break;
+            }
         }
 
     }
@@ -34,7 +43,7 @@ public class TicketController {
         /**
          * aktualisieren der Ticket -Daten
          */
-        ticket.Name = titelTextField.getText();
+        ticket.name = titelTextField.getText();
 
         return ticket;
     }

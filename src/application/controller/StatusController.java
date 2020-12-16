@@ -29,8 +29,8 @@ public class StatusController {
             selectedItem = s;
         }
 
-        statusNummerTextField.setText(statusListView.getSelectionModel().getSelectedItem().StatusNummer);
-        statusBeschreibungTextField1.setText(statusListView.getSelectionModel().getSelectedItem().Status1);
+        statusNummerTextField.setText(statusListView.getSelectionModel().getSelectedItem().StatusID);
+        statusBeschreibungTextField1.setText(statusListView.getSelectionModel().getSelectedItem().StatusName);
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {

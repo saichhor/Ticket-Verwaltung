@@ -10,9 +10,10 @@ import java.io.IOException;
 
 public class Status {
 
-    public String Status1;
-    public String StatusNummer;
+    public String StatusName;
+    public String StatusID;
 
+    
 
 
     public static ObservableList<Status> readFile(String filename){
@@ -30,8 +31,8 @@ public class Status {
                     s = s.replace("\"", "");
                     String[] words = s.split(";");
                     Status a = new Status();
-                    a.StatusNummer = words[0];
-                    a.Status1 = words[1];
+                    a.StatusID = words[0];
+                    a.StatusName = words[1];
                     list.add(a);
                 }
             } finally {
@@ -45,6 +46,6 @@ public class Status {
 
     @Override
     public String toString() {
-        return Status1;
+        return StatusName;
     }
 }

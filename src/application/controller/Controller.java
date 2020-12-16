@@ -4,6 +4,8 @@ import application.MyFXMLLoader;
 import application.model.Priority;
 import application.model.Status;
 import application.model.Ticket;
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +14,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -26,9 +30,18 @@ public class Controller {
     public TextField filterNameTextField;   //filern nach name des Todos
     public ComboBox<Status> filterStatusCombobox;   //filter nach status
     public ComboBox<Priority> filterPrioritätCombobox;//filter nach priorität
+    private ArrayList<Ticket> allTicket;
 
 
     public void initialize() {
+
+        /**
+        ticketListView.setItems(Ticket.readFile("tickets.csv"));
+
+        ObservableList<Status> statusList = Status.readFile("stati.csv");
+        statusList.add(0, new Status(-1, "Filter wählen"));
+
+         **/
         filterStatusCombobox.setItems(Status.readFile("stati.csv"));
         filterPrioritätCombobox.setItems(Priority.readFile("priorities.csv"));
         ticketListView.setItems(Ticket.readFile("tickets.csv"));

@@ -10,11 +10,11 @@ import java.io.IOException;
 
 public class Ticket {
 
-    public String ID;
-    public String Name;
-    public String Beschreibung;
-    public String Status;
-    public String Priorität;
+    public String id;
+    public String name;
+    public String beschreibung;
+    public Status status;
+    public Priority prioritaet;
 
     public static ObservableList<Ticket> readFile(String filename){
         return readFile(new File(filename));
@@ -31,11 +31,16 @@ public class Ticket {
                     s = s.replace("\"", "");
                     String[] words = s.split(";");
                     Ticket a = new Ticket();
-                    a.ID = words[0];
-                    a.Name = words[1];
-                    a.Beschreibung = words[2];
-                    a.Status = words[3];
-                    a.Priorität = words[4];
+                    a.id = words[0];
+                    a.name = words[1];
+                    a.beschreibung = words[2];
+                    Status status = new Status();
+                    status.StatusID = words[3];
+                    a.status = status;
+                    Priority priority = new Priority();
+                    priority.priorityId = words[4];
+
+                    a.prioritaet = priority;
                     list.add(a);
                 }
             } finally {
