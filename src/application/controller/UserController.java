@@ -107,6 +107,13 @@ public class UserController {
     }
 
     public void deleteButtonClicked(ActionEvent actionEvent) {
+        userNummerTextField.setText("");
+        userTitelTextField.setText("");
+        userNameTextField.setText("");
+        userStrasseTextField.setText("");
+        userPLZTextField.setText("");
+        userStadtTextField.setText("");
+        userAbteilungTextField.setText("");
     }
 
     public void overwrite(){

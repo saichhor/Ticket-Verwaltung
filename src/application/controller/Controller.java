@@ -117,14 +117,6 @@ public class Controller {
         active = (TicketController) loader.getController();
 
 
-        ticketListView.
-
-        list.remove(selectedItem);
-        artikelList.refresh();
-        writeFile();
-
-
-
     }
 
 
