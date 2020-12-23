@@ -5,6 +5,7 @@ import application.model.Priority;
 import application.model.Status;
 import application.model.Ticket;
 import javafx.beans.Observable;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -31,6 +33,8 @@ public class Controller {
     public ComboBox<Status> filterStatusCombobox;   //filter nach status
     public ComboBox<Priority> filterPrioritätCombobox;//filter nach priorität
     private ArrayList<Ticket> allTicket;
+
+
 
 
     public void initialize() {
@@ -94,6 +98,12 @@ public class Controller {
 
          active = (TicketController) loader.getController();
         active.setTicket(null);
+
+
+
+
+
+        System.out.println("Neuer Artikel");
     }
 
     public void deleteClicked(ActionEvent actionEvent) {
@@ -111,6 +121,24 @@ public class Controller {
     }
 
 
+    public void searchlistKey(KeyEvent keyEvent) {
+        //searchResults.clear();
 
+        //for (Ticket a : list) {
 
+/**
+
+          / if (a.name.contains(filterNameTextField.getText()) || a.id.contains(filterNameTextField.getText()) ) {
+             searchResults.add(a);
+            }
+        }
+
+        if (filterNameTextField.getText().isEmpty()) {
+            artikelList.setItems(list);
+        } else {
+            artikelList.setItems(searchResults);
+        }
+    }
+ **/
+}
 }

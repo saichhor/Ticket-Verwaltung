@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -16,5 +17,8 @@
       <ComboBox layoutX="82.0" layoutY="264.0" prefHeight="25.0" prefWidth="498.0" AnchorPane.bottomAnchor="110.66666666666667" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="20.0" />
       <ComboBox fx:id="statusComboBox" layoutX="82.0" layoutY="296.0" prefHeight="25.0" prefWidth="498.0" AnchorPane.bottomAnchor="78.66666666666667" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="20.0" />
       <ComboBox fx:id="priorityComboBox" layoutX="82.0" layoutY="329.0" prefHeight="25.0" prefWidth="498.0" AnchorPane.bottomAnchor="45.66666666666667" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="21.0" layoutY="405.0" mnemonicParsing="false" onAction="#newClicked" text="Neu" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="405.0" />
+      <Button layoutX="75.0" layoutY="405.0" mnemonicParsing="false" onAction="#deleteClicked" prefWidth="69.0" text="Löschen" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="405.0" />
+      <Button layoutX="433.0" layoutY="405.0" mnemonicParsing="false" onAction="#saveClicked" text="Speichern" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="405.0" />
    </children>
 </AnchorPane>
