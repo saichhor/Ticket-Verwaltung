@@ -18,32 +18,33 @@ public class TicketController {
     public ComboBox<Status> statusComboBox;
     public ComboBox<Priority> priorityComboBox;
 
-    ObservableList<Ticket> list = FXCollections.observableArrayList();
-    ObservableList<Ticket> searchResults = FXCollections.observableArrayList();
 
-    private Ticket selectedItem = null;
 
     public void setTicket(Ticket t) {
         // zeige t.name im  entsprechenden TextField an.
 
         this.ticket = t;
-        titelTextField.setText(t.name);
-        commentTextField.setText(t.beschreibung);
         statusComboBox.setItems(Status.readFile("stati.csv"));
         priorityComboBox.setItems(Priority.readFile("priorities.csv"));
 
 
-        for (Status s : statusComboBox.getItems()) {
-            if (s.StatusID == t.status.StatusID) {
-                statusComboBox.getSelectionModel().select(s);
-                //statusComboBox.setSelectionModel(t.status.StatusName);
-                break;
+        if (t != null) {
+            titelTextField.setText(t.name);
+            commentTextField.setText(t.beschreibung);
+
+
+            for (Status s : statusComboBox.getItems()) {
+                if (s.StatusID.equals(t.status.StatusID)) {
+                    statusComboBox.getSelectionModel().select(s);
+                    //statusComboBox.setSelectionModel(t.status.StatusName);
+                    break;
+                }
             }
-        }
-        for (Priority p : priorityComboBox.getItems()) {
-            if (p.priorityId == t.prioritaet.priorityId) {
-                priorityComboBox.getSelectionModel().select(p);
-                break;
+            for (Priority p : priorityComboBox.getItems()) {
+                if (p.priorityId.equals(t.prioritaet.priorityId)) {
+                    priorityComboBox.getSelectionModel().select(p);
+                    break;
+                }
             }
         }
 
@@ -54,58 +55,12 @@ public class TicketController {
          * aktualisieren der Ticket -Daten
          */
         ticket.name = titelTextField.getText();
+        ticket.beschreibung = commentTextField.getText();
+        ticket.status= statusComboBox.getValue();
+        ticket.prioritaet = priorityComboBox.getValue();
 
         return ticket;
     }
 
-    public void newClicked(ActionEvent actionEvent) {
 
-        selectedItem = null;
-
-        titelTextField.setText("");
-        commentTextField.setText("");
-        statusComboBox.setSelectionModel(null);
-        priorityComboBox.setSelectionModel(null);
-
-
-        System.out.println("Neuer Artikel");
-    }
-
-    public void deleteClicked(ActionEvent actionEvent) {
-        list.remove(selectedItem);
-        //artikelList.refresh();
-        //writeFile();
-    }
-
-    public void saveClicked(ActionEvent actionEvent) {
-        if (selectedItem != null) {
-            //aktualisieren
-
-            selectedItem.name = titelTextField.getText();
-            selectedItem.beschreibung = commentTextField.getText();
-            //selectedItem.status = statusComboBox.setItems();
-            //selectedItem.prioritaet = priorityComboBox.setItems();
-
-            /**
-             * Es wurde ein Artikel bearbeitet
-             * Sag der Artikelliste dass sie sich "refresh" soll
-             */
-
-
-            System.out.println("Daten aktualisieren");
-        } else {
-            //neuer Artikel-
-
-            Ticket a = new Ticket();
-            a.name = titelTextField.getText();
-            a.beschreibung = commentTextField.getText();
-            //a.status = statusComboBox.getText();
-            //a.prioritaet = priorityComboBox.getItems();
-
-            System.out.println("Neuer Artikel");
-
-
-            list.add(a);
-        }
-    }
 }

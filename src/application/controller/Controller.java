@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    private  TicketController active = null;
+    private TicketController active = null;
 
     public ListView<Ticket> ticketListView;
     public AnchorPane contentPane;
@@ -40,11 +40,10 @@ public class Controller {
     public void initialize() {
 
         /**
-        ticketListView.setItems(Ticket.readFile("tickets.csv"));
+         ticketListView.setItems(Ticket.readFile("tickets.csv"));
 
-        ObservableList<Status> statusList = Status.readFile("stati.csv");
-        statusList.add(0, new Status(-1, "Filter wählen"));
-
+         ObservableList<Status> statusList = Status.readFile("stati.csv");
+         statusList.add(0, new Status(-1, "Filter wählen"));
          **/
         filterStatusCombobox.setItems(Status.readFile("stati.csv"));
         filterPrioritätCombobox.setItems(Priority.readFile("priorities.csv"));
@@ -96,12 +95,8 @@ public class Controller {
 
         contentPane.getChildren().add(root);
 
-         active = (TicketController) loader.getController();
+        active = (TicketController) loader.getController();
         active.setTicket(null);
-
-
-
-
 
         System.out.println("Neuer Artikel");
     }
@@ -110,6 +105,24 @@ public class Controller {
         //laden des Tickets
         // Entfernen aus ListView
         //Datei aktualisieren
+        MyFXMLLoader loader = new MyFXMLLoader();
+        Parent root = loader.loadFXML("view/ticket.fxml");
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setTopAnchor(root, 0.0);
+        AnchorPane.setLeftAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
+
+        contentPane.getChildren().add(root);
+
+        active = (TicketController) loader.getController();
+
+
+        ticketListView.
+
+        list.remove(selectedItem);
+        artikelList.refresh();
+        writeFile();
+
 
 
     }
@@ -122,23 +135,6 @@ public class Controller {
 
 
     public void searchlistKey(KeyEvent keyEvent) {
-        //searchResults.clear();
 
-        //for (Ticket a : list) {
-
-/**
-
-          / if (a.name.contains(filterNameTextField.getText()) || a.id.contains(filterNameTextField.getText()) ) {
-             searchResults.add(a);
-            }
-        }
-
-        if (filterNameTextField.getText().isEmpty()) {
-            artikelList.setItems(list);
-        } else {
-            artikelList.setItems(searchResults);
-        }
     }
- **/
-}
 }
