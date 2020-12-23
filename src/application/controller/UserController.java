@@ -36,8 +36,6 @@ public class UserController {
             selectedItem = s;
         }
 
-
-
         userNummerTextField.setText(userListView.getSelectionModel().getSelectedItem().userNummer);
         userTitelTextField.setText(userListView.getSelectionModel().getSelectedItem().userTitel);
         userNameTextField.setText(userListView.getSelectionModel().getSelectedItem().userName);
@@ -46,14 +44,19 @@ public class UserController {
         userStadtTextField.setText(userListView.getSelectionModel().getSelectedItem().userStadt);
         userAbteilungTextField.setText(userListView.getSelectionModel().getSelectedItem().userAbteilung);
 
-
-
-
-
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void saveButtonClicked(ActionEvent actionEvent) {
+    }
+
+    public void createButtonClicked(ActionEvent actionEvent) {
+    }
+
+    public void deleteButtonClicked(ActionEvent actionEvent) {
     }
 }
