@@ -10,6 +10,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class TicketController {
 
     private Ticket ticket;
@@ -18,6 +23,7 @@ public class TicketController {
     public ComboBox<Status> statusComboBox;
     public ComboBox<Priority> priorityComboBox;
 
+    ObservableList<Ticket> list = FXCollections.observableArrayList();
 
 
     public void setTicket(Ticket t) {
@@ -56,7 +62,7 @@ public class TicketController {
          */
         ticket.name = titelTextField.getText();
         ticket.beschreibung = commentTextField.getText();
-        ticket.status= statusComboBox.getValue();
+        ticket.status = statusComboBox.getValue();
         ticket.prioritaet = priorityComboBox.getValue();
 
         return ticket;

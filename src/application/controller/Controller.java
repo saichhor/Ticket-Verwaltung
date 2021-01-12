@@ -117,6 +117,10 @@ public class Controller {
         active = (TicketController) loader.getController();
 
 
+        active.getTicket();
+
+        Ticket selected = ticketListView.getSelectionModel().getSelectedItem();
+
     }
 
 
