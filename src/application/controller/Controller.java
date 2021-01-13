@@ -5,6 +5,7 @@ import application.model.Priority;
 import application.model.Status;
 import application.model.Ticket;
 import javafx.beans.Observable;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    private  TicketController active = null;
+    private TicketController active = null;
 
     public ListView<Ticket> ticketListView;
     public AnchorPane contentPane;
@@ -33,17 +35,18 @@ public class Controller {
     private ArrayList<Ticket> allTicket;
 
 
+
+
     public void initialize() {
 
         /**
-        ticketListView.setItems(Ticket.readFile("tickets.csv"));
+         ticketListView.setItems(Ticket.readFile("tickets.csv"));
 
-        ObservableList<Status> statusList = Status.readFile("stati.csv");
-        statusList.add(0, new Status(-1, "Filter wählen"));
-
+         ObservableList<Status> statusList = Status.readFile("stati.csv");
+         statusList.add(0, new Status(-1, "Filter wählen"));
          **/
-        filterStatusCombobox.setItems(Status.readFile("stati.csv"));
-        filterPrioritätCombobox.setItems(Priority.readFile("priorities.csv"));
+        filterStatusCombobox.setItems(Status.loadList());
+        filterPrioritätCombobox.setItems(Priority.loadList());
         ticketListView.setItems(Ticket.readFile("tickets.csv"));
     }
 
@@ -92,15 +95,31 @@ public class Controller {
 
         contentPane.getChildren().add(root);
 
-         active = (TicketController) loader.getController();
+        active = (TicketController) loader.getController();
         active.setTicket(null);
+
+        System.out.println("Neuer Artikel");
     }
 
     public void deleteClicked(ActionEvent actionEvent) {
         //laden des Tickets
         // Entfernen aus ListView
         //Datei aktualisieren
+        MyFXMLLoader loader = new MyFXMLLoader();
+        Parent root = loader.loadFXML("view/ticket.fxml");
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setTopAnchor(root, 0.0);
+        AnchorPane.setLeftAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
 
+        contentPane.getChildren().add(root);
+
+        active = (TicketController) loader.getController();
+
+
+        active.getTicket();
+
+        Ticket selected = ticketListView.getSelectionModel().getSelectedItem();
 
     }
 
@@ -111,6 +130,7 @@ public class Controller {
     }
 
 
+    public void searchlistKey(KeyEvent keyEvent) {
 
-
+    }
 }

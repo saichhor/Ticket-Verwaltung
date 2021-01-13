@@ -7,12 +7,40 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Status {
 
     public String StatusName;
     public String StatusID;
 
+    public static ObservableList<Status> loadList(){
+        ObservableList<Status> list = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT  * FROM stati");
+
+            while(result.next()){
+                Status s = new Status();
+                s.StatusName = result.getString("name");
+                s.StatusID = result.getString("status_id");
+                list.add(s);
+
+            }
+        }catch (SQLException throwables){
+
+            throwables.printStackTrace();
+        }
+
+        return list;
+    }
     
 
 

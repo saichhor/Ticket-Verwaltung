@@ -25,7 +25,7 @@ public class PriorityController {
     public void initialize() throws Exception{
         statusListView.toString();
 
-        statusListView.setItems(Priority.readFile("priorities.csv"));
+        statusListView.setItems(Priority.loadList());
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {

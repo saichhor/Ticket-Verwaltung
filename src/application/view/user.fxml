@@ -8,8 +8,8 @@
 <AnchorPane prefHeight="370.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.UserController">
    <children>
       <TextField fx:id="userTitelTextField" layoutX="234.0" layoutY="57.0" prefHeight="25.0" prefWidth="323.0" promptText="Titel..." AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="57.0" />
-      <Button fx:id="cancelButton" layoutX="399.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Abbrechen" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="336.0" />
-      <Button fx:id="saveButton" layoutX="491.0" layoutY="336.0" mnemonicParsing="false" onAction="#saveButtonClicked" text="Speichern" AnchorPane.leftAnchor="491.0" AnchorPane.topAnchor="336.0" />
+      <Button fx:id="cancelButton" layoutX="484.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Abbrechen" AnchorPane.leftAnchor="484.0" AnchorPane.topAnchor="336.0" />
+      <Button fx:id="saveButton" layoutX="398.0" layoutY="336.0" mnemonicParsing="false" onAction="#saveButtonClicked" text="Speichern" AnchorPane.leftAnchor="398.0" AnchorPane.topAnchor="336.0" />
       <TextField fx:id="userNummerTextField" layoutX="234.0" layoutY="21.0" prefHeight="25.0" prefWidth="323.0" promptText="Nummer..." AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="21.0" />
       <TextField fx:id="userStrasseTextField" layoutX="235.0" layoutY="129.0" prefHeight="25.0" prefWidth="323.0" promptText="Straße...." AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="129.0" />
       <TextField fx:id="userPLZTextField" layoutX="235.0" layoutY="165.0" prefHeight="25.0" prefWidth="323.0" promptText="PLZ...." AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="165.0" />
@@ -17,6 +17,7 @@
       <TextField fx:id="userNameTextField" layoutX="234.0" layoutY="94.0" prefHeight="25.0" prefWidth="323.0" promptText="Name..." AnchorPane.leftAnchor="233.99999999999994" AnchorPane.rightAnchor="41.66666666666674" AnchorPane.topAnchor="94.0" />
       <TextField fx:id="userAbteilungTextField" layoutX="236.0" layoutY="232.0" prefHeight="25.0" prefWidth="323.0" promptText="Abteilung..." AnchorPane.leftAnchor="235.99999999999994" AnchorPane.rightAnchor="39.666666666666686" AnchorPane.topAnchor="232.0" />
       <ListView fx:id="userListView" layoutX="-15.0" layoutY="78.0" onMouseClicked="#ListViewclicked" prefHeight="370.0" prefWidth="226.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="createButton" layoutX="320.0" layoutY="336.0" mnemonicParsing="false" onAction="#createButtonClicked" text="Erstellen" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="336.0" />
+      <Button fx:id="createButton" layoutX="236.0" layoutY="336.0" mnemonicParsing="false" onAction="#createButtonClicked" text="Erstellen" AnchorPane.leftAnchor="236.0" AnchorPane.topAnchor="336.0" />
+      <Button fx:id="deleteButton" layoutX="316.0" layoutY="336.0" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Löschen" AnchorPane.leftAnchor="316.0" AnchorPane.topAnchor="336.0" />
    </children>
 </AnchorPane>

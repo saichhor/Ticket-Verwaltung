@@ -1,7 +1,6 @@
 package application.controller;
 
 import application.model.Status;
-import application.model.Ticket;
 import application.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,62 +24,21 @@ public class UserController {
     public ListView<User> userListView;
     public TextField userNummerTextField;
     public TextField userNameTextField;
-    public Button createButton;
-
-    private User selectedItem = null;
-    public File file = new File("user.csv");
 
     ObservableList<User> list = FXCollections.observableArrayList();
 
+    private User selectedItem = null;
+
     public void initialize(){
-        readFile();
-    }
-
-    public void readFile () {
-        String s;
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader(file));
-            try {
-                br.readLine(); // ignoriere die erste Zeile => Überschriften
-
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    User a = new User();
-
-                    String[] words = s.split(";");
-
-                    a.userNummer = words[0];
-                    a.userTitel = words[1];
-                    a.userName = words[2];
-                    a.userStrasse = words[3];
-                    a.userPLZ = words[4];
-                    a.userStadt = words[5];
-                    a.userAbteilung = words[6];
-
-
-                    list.add(a); // füge Artikel zur Liste hinzu
-                }
-            } finally {
-                br.close();
-            }
-        } catch (IOException io) {
-            io.printStackTrace();
-        }
-        userListView.setItems(list);
-
+        userListView.setItems(User.readFile("users.csv"));
     }
 
     public void ListViewclicked(MouseEvent mouseEvent) {
         User s = userListView.getSelectionModel().getSelectedItem();
 
         if (s != null) {
-            this.selectedItem = s;
+            selectedItem = s;
         }
-
-
 
         userNummerTextField.setText(userListView.getSelectionModel().getSelectedItem().userNummer);
         userTitelTextField.setText(userListView.getSelectionModel().getSelectedItem().userTitel);
@@ -90,10 +48,6 @@ public class UserController {
         userStadtTextField.setText(userListView.getSelectionModel().getSelectedItem().userStadt);
         userAbteilungTextField.setText(userListView.getSelectionModel().getSelectedItem().userAbteilung);
 
-
-
-
-
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
@@ -101,24 +55,11 @@ public class UserController {
         stage.close();
     }
 
-    public void createButtonClicked(ActionEvent actionEvent) {
-        userTitelTextField.clear();
-        userStrasseTextField.clear();
-        userPLZTextField.clear();
-        userStadtTextField.clear();
-        userAbteilungTextField.clear();
-        userNummerTextField.clear();
-        userNameTextField.clear();
-
-        // lösche die Variable, die den gewählten Artikel
-        // beinhaltet
-        this.selectedItem = null;
-    }
-
     public void saveButtonClicked(ActionEvent actionEvent) {
-
         if (this.selectedItem != null) {
-
+            // Aktualisiere die Artikeldaten
+            // (übernimm die aktuellen Daten von den Textfeldern)
+            // und speichere alles in die Datei
             selectedItem.userNummer = userNummerTextField.getText();
             selectedItem.userTitel = userTitelTextField.getText();
             selectedItem.userName = userNameTextField.getText();
@@ -127,24 +68,65 @@ public class UserController {
             selectedItem.userStadt = userStadtTextField.getText();
             selectedItem.userAbteilung = userAbteilungTextField.getText();
 
-
-            userListView.refresh();
+            overwrite();
 
         } else {
-
+            // erzeuge neuen Artikel, füge ihn in die ListView ein
+            // und speichere alles in die Datei
             System.out.println("Neuer User");
             String s;
             try {
-                try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "UTF-8"))) {
-                    writer.write("\n\"" + userNummerTextField.getText() + "\";\"" + userStrasseTextField.getText() + "\";\"" + userPLZTextField.getText() + "\";\"" + userStadtTextField.getText() + "\";\"" + userPLZTextField.getText() + "\";\"" + userStadtTextField.getText() + "\";\"" + userAbteilungTextField.getText() + "\";\"" + userNummerTextField.getText() + "\";\"" + userNameTextField.getText() + "\";");
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("users.csv", true), "UTF-8"));
+                try {
+                    writer.write("\n\"" + userNummerTextField.getText() + "\";\"" + userTitelTextField.getText() + "\";\"" + userNameTextField.getText() + "\";\"" + userStrasseTextField.getText() + "\";\"" + userPLZTextField.getText() + "\";\"" + userStadtTextField.getText() + "\";\"" + userAbteilungTextField.getText() + "\";");
                     list.clear();
-                    Ticket a = new Ticket();
+                    User a = new User();
 
+                } finally {
+                    writer.close();
                 }
             } catch (IOException io) {
                 io.printStackTrace();
             }
             initialize();
+        }
+    }
+
+    public void createButtonClicked(ActionEvent actionEvent) {
+        userNummerTextField.clear();
+        userTitelTextField.clear();
+        userNameTextField.clear();
+        userStrasseTextField.clear();
+        userPLZTextField.clear();
+        userStadtTextField.clear();
+        userAbteilungTextField.clear();
+
+        // lösche die Variable, die den gewählten Artikel
+        // beinhaltet
+        this.selectedItem = null;
+    }
+
+    public void deleteButtonClicked(ActionEvent actionEvent) {
+        userNummerTextField.setText("");
+        userTitelTextField.setText("");
+        userNameTextField.setText("");
+        userStrasseTextField.setText("");
+        userPLZTextField.setText("");
+        userStadtTextField.setText("");
+        userAbteilungTextField.setText("");
+    }
+
+    public void overwrite(){
+
+        try {
+            try (BufferedWriter wr = new BufferedWriter(new FileWriter("users.csv"))) {
+
+                for (User a : list) {
+                    wr.write("\"" + a.userNummer + "\";\"" + a.userTitel + "\";\"" + a.userName + "\";\"" + a.userStrasse + "\";\"" + a.userPLZ + "\";\"" + a.userStadt + "\";\"" + a.userAbteilung + "\";\n");
+                }
+            }
+        } catch (IOException io) {
+            io.printStackTrace();
         }
     }
 }
