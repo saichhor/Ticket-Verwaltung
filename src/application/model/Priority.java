@@ -7,15 +7,48 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 
 public class Priority {
 
     public String priorityId;
+    public String desc;
+
 
 
 
     public static ObservableList<Priority> readFile(String filename){
         return readFile(new File(filename));
+    }
+
+
+    public static ObservableList<Priority> loadList(){
+        ObservableList<Priority> list = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT  * FROM priority");
+
+            while(result.next()){
+                Priority p = new Priority();
+                p.desc = result.getString("name");
+                p.priorityId = result.getString("priority_id");
+                list.add(p);
+
+            }
+        }catch (SQLException throwables){
+
+            throwables.printStackTrace();
+        }
+
+        return list;
     }
 
     public static ObservableList<Priority> readFile(File file){
@@ -44,6 +77,6 @@ public class Priority {
 
     @Override
     public String toString() {
-        return priorityId;
+        return desc;
     }
 }

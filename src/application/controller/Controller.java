@@ -45,8 +45,8 @@ public class Controller {
          ObservableList<Status> statusList = Status.readFile("stati.csv");
          statusList.add(0, new Status(-1, "Filter wählen"));
          **/
-        filterStatusCombobox.setItems(Status.readFile("stati.csv"));
-        filterPrioritätCombobox.setItems(Priority.readFile("priorities.csv"));
+        filterStatusCombobox.setItems(Status.loadList());
+        filterPrioritätCombobox.setItems(Priority.loadList());
         ticketListView.setItems(Ticket.readFile("tickets.csv"));
     }
 

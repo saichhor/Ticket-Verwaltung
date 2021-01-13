@@ -30,8 +30,8 @@ public class TicketController {
         // zeige t.name im  entsprechenden TextField an.
 
         this.ticket = t;
-        statusComboBox.setItems(Status.readFile("stati.csv"));
-        priorityComboBox.setItems(Priority.readFile("priorities.csv"));
+        statusComboBox.setItems(Status.loadList());
+        priorityComboBox.setItems(Priority.loadList());
 
 
         if (t != null) {
