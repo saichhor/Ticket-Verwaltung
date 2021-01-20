@@ -93,7 +93,7 @@ public class Department {
             Connection connection = AccessDb.getConnection();
 
             PreparedStatement statement = null;
-            statement = connection.prepareStatement("UPDATE priorities SET name = ? WHERE priority_id = ?");
+            statement = connection.prepareStatement("UPDATE departments SET name = ? WHERE department = ?");
             statement.setString(1, Department1);
             statement.setInt(2, Integer.parseInt(DepartmentNumber));
 

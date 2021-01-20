@@ -91,7 +91,7 @@ public class User {
 
             Statement statement = null;
             statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + userNummer);
+            statement.executeUpdate("DELETE FROM user WHERE user_id = " + userNummer);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
