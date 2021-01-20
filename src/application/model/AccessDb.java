@@ -16,7 +16,7 @@ public class AccessDb {
     private static Connection connection = null;
 
     /**
-     * Vereinfachtes Singleton -Pattern
+     * Vereinfachtes Singleton - Pattern
      * @return
      */
     public static Connection getConnection(){
@@ -26,7 +26,7 @@ public class AccessDb {
         if(connection == null){
             try {
                 //erzeuge eine neue Verbindung zu Datenbank
-                connection= DriverManager.getConnection("jdbc:ucanaccess://C:/Users/andre/HTL3Klasse/ITP/Ticket-Verwaltung/db/itp16.11.accdb");
+                connection= DriverManager.getConnection("jdbc:ucanaccess://db/ITP-Tickets.accdb");
             }catch(SQLException throwables) {
 
             }

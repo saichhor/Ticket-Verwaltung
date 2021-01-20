@@ -21,14 +21,12 @@ public class Priority {
     public String desc;
 
 
-
-
-    public static ObservableList<Priority> readFile(String filename){
+    public static ObservableList<Priority> readFile(String filename) {
         return readFile(new File(filename));
     }
 
 
-    public static ObservableList<Priority> loadList(){
+    public static ObservableList<Priority> loadList() {
         ObservableList<Priority> list = FXCollections.observableArrayList();
 
         try {
@@ -36,19 +34,20 @@ public class Priority {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT  * FROM priority");
+            ResultSet result = statement.executeQuery("SELECT * FROM priorities");
 
-            while(result.next()){
+            while (result.next()) {
                 Priority p = new Priority();
                 p.desc = result.getString("name");
                 p.priorityId = result.getString("priority_id");
+
                 list.add(p);
 
 
                 //Priority a = new Priority(result.getInt("priority_id"), result.getString("name"));
 
             }
-        }catch (SQLException throwables){
+        } catch (SQLException throwables) {
 
             //throwables.printStackTrace();
         }
@@ -56,7 +55,7 @@ public class Priority {
         return list;
     }
 
-    public static ObservableList<Priority> readFile(File file){
+    public static ObservableList<Priority> readFile(File file) {
         ObservableList<Priority> list = FXCollections.observableArrayList();
         String s;
         try {
@@ -74,7 +73,7 @@ public class Priority {
             } finally {
                 br.close();
             }
-        }catch (IOException io){
+        } catch (IOException io) {
             io.printStackTrace();
         }
         return list;
@@ -84,4 +83,18 @@ public class Priority {
     public String toString() {
         return desc;
     }
+
+    public void delete() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + priorityId);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 }

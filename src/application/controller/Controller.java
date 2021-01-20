@@ -98,7 +98,7 @@ public class Controller {
         active = (TicketController) loader.getController();
         active.setTicket(null);
 
-        System.out.println("Neuer Artikel");
+        System.out.println("Neues Ticket");
     }
 
     public void deleteClicked(ActionEvent actionEvent) {

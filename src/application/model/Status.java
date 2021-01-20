@@ -76,4 +76,17 @@ public class Status {
     public String toString() {
         return StatusName;
     }
+
+    public void delete() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + priorityId);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

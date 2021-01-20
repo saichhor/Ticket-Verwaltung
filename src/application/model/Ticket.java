@@ -7,6 +7,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Ticket {
 
@@ -18,6 +22,32 @@ public class Ticket {
 
     public static ObservableList<Ticket> readFile(String filename){
         return readFile(new File(filename));
+    }
+
+    public static ObservableList<Ticket> loadList(){
+        ObservableList<Ticket> list = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT  * FROM priorities");
+
+            while(result.next()){
+                Ticket t = new Ticket();
+                t.id = result.getString("name");
+                t.name = result.getString("priority_id");
+                t.beschreibung = result.getString("Beschreibung");
+
+                list.add(t);
+            }
+        }catch (SQLException throwables){
+
+            throwables.printStackTrace();
+        }
+
+        return list;
     }
 
     public static ObservableList<Ticket> readFile(File file){

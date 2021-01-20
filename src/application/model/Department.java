@@ -7,6 +7,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Department {
 
@@ -16,6 +20,31 @@ public class Department {
 
     public static ObservableList<Department> readFile(String filename){
         return readFile(new File(filename));
+    }
+
+    public static ObservableList<Department> loadList(){
+        ObservableList<Department> list = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT  * FROM priorities");
+
+            while(result.next()){
+                Department d = new Department();
+                d.Department1 = result.getString("department");
+                d.DepartmentNumber = result.getString("department_number");
+
+                list.add(d);
+            }
+        }catch (SQLException throwables){
+
+            throwables.printStackTrace();
+        }
+
+        return list;
     }
 
     public static ObservableList<Department> readFile(File file){
@@ -47,5 +76,18 @@ public class Department {
     @Override
     public String toString() {
         return Department1;
+    }
+
+    public void delete() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + priorityId);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

@@ -7,6 +7,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class User {
 
@@ -21,6 +25,31 @@ public class User {
 
     public static ObservableList<User> readFile(String filename) {
         return readFile(new File(filename));
+    }
+
+    public static ObservableList<User> loadList(){
+        ObservableList<User> list = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT  * FROM priorities");
+
+            while(result.next()){
+                User u = new User();
+                u.userNummer = result.getString("name");
+                u.userTitel = result.getString("priority_id");
+
+                list.add(u);
+            }
+        }catch (SQLException throwables){
+
+            throwables.printStackTrace();
+        }
+
+        return list;
     }
 
     public static ObservableList<User> readFile(File file) {
@@ -58,6 +87,19 @@ public class User {
     public String toString() {
         return userName;
     }
+
+    public void delete() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + priorityId);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }´´
 }
 
 
