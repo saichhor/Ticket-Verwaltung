@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
+
+
 public class Priority {
 
     public String priorityId;
@@ -42,10 +44,13 @@ public class Priority {
                 p.priorityId = result.getString("priority_id");
                 list.add(p);
 
+
+                //Priority a = new Priority(result.getInt("priority_id"), result.getString("name"));
+
             }
         }catch (SQLException throwables){
 
-            throwables.printStackTrace();
+            //throwables.printStackTrace();
         }
 
         return list;
