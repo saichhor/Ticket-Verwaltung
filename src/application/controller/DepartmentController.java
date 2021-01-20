@@ -17,7 +17,14 @@ public class DepartmentController {
     private Department selectedItem = null;
 
     public void saveButtonClicked(ActionEvent actionEvent) {
+        if (selectedItem != null) {
+            selectedItem.Department1 = AbteilungTextField.getText();
 
+            statusListView.refresh();
+
+            selectedItem.update(); // Aktualisiere DB
+
+        }
     }
 
     public void initialize() throws Exception{

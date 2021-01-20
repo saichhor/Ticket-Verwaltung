@@ -21,9 +21,29 @@ public class PriorityController {
     public Button saveButton;
     public Button deleteButton;
 
+    private int count = 0;
+
     private Priority selectedItem = null;
 
     public void saveButtonClicked(ActionEvent actionEvent) {
+        if(selectedItem != null){
+            selectedItem.desc = priorityField.getText();
+
+            priorityListView.refresh();
+
+            selectedItem.update(); // Aktualisiere DB
+        }else{
+            //insert intodataba
+            /**
+            if(!priorityField.getText().isEmpty()){
+                ++count;
+                Priority s = new Priority(count, priorityField.getText());
+
+                priorityListView.getItems().add(s);
+
+        }
+           **/
+        }
 
     }
 

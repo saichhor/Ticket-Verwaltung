@@ -7,10 +7,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Status {
 
@@ -83,9 +80,24 @@ public class Status {
 
             Statement statement = null;
             statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + priorityId);
+            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + StatusID);
 
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void update(){
+        try{
+            Connection connection = AccessDb.getConnection();
+
+            PreparedStatement statement = null;
+            statement = connection.prepareStatement("UPDATE priorities SET name = ? WHERE priority_id = ?");
+            statement.setString(1, StatusName);
+            statement.setInt(2, Integer.parseInt(StatusID));
+
+            statement.execute();
+        }catch (SQLException throwables){
             throwables.printStackTrace();
         }
     }
