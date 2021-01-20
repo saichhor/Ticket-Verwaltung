@@ -92,7 +92,7 @@ public class Status {
             Connection connection = AccessDb.getConnection();
 
             PreparedStatement statement = null;
-            statement = connection.prepareStatement("UPDATE priorities SET name = ? WHERE priority_id = ?");
+            statement = connection.prepareStatement("UPDATE stati SET name = ? WHERE status_id = ?");
             statement.setString(1, StatusName);
             statement.setInt(2, Integer.parseInt(StatusID));
 

@@ -44,4 +44,13 @@ public class StatusController {
     public void editStatiClicked(ActionEvent actionEvent) {
     }
 
+    public void saveButtonClicked(ActionEvent actionEvent) {
+        if (selectedItem != null) {
+            selectedItem.StatusName = statusBeschreibungTextField1.getText();
+
+            statusListView.refresh();
+
+            selectedItem.update(); // Aktualisiere DB
+        }
+    }
 }

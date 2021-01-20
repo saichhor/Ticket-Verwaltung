@@ -81,7 +81,7 @@ public class Department {
 
             Statement statement = null;
             statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + DepartmentNumber);
+            statement.executeUpdate("DELETE FROM departments WHERE department = " + DepartmentNumber);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

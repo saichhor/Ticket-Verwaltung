@@ -103,7 +103,7 @@ public class User {
             Connection connection = AccessDb.getConnection();
 
             PreparedStatement statement = null;
-            statement = connection.prepareStatement("UPDATE priorities SET name = ? WHERE priority_id = ?");
+            statement = connection.prepareStatement("UPDATE user SET name = ? WHERE user_id = ?");
             statement.setString(1, userName);
             statement.setInt(2, Integer.parseInt(userNummer));
 
