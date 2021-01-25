@@ -20,6 +20,7 @@ public class User {
     public String userAbteilung;
 
 
+
     public static ObservableList<User> readFile(String filename) {
         return readFile(new File(filename));
     }
@@ -44,6 +45,7 @@ public class User {
                         result.getInt("zip"),
                         result.getInt("city"),
                         result.getInt("department"));
+                 das oben nur wenn man construktor macht
                  **/
                 u.userNummer = result.getString("user_id");
                 u.userTitel = result.getString("title");

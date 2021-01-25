@@ -27,12 +27,12 @@ public class Department {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT  * FROM priorities");
+            ResultSet result = statement.executeQuery("SELECT  * FROM departments");
 
             while(result.next()){
                 Department d = new Department();
-                d.Department1 = result.getString("department");
-                d.DepartmentNumber = result.getString("department_number");
+                d.Department1 = result.getString("name");
+                d.DepartmentNumber = result.getString("department");
 
                 list.add(d);
             }
