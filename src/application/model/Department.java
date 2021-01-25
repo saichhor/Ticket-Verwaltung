@@ -85,8 +85,8 @@ public class Department {
             ResultSet result = statement.executeQuery("SELECT * FROM departments WHERE department = " + id);
             
             if(result.next()) {
-                obj.Department1 = result.getString("department");
-                obj.DepartmentNumber = result.getString("name");
+                obj.Department1 = result.getString("name");
+                obj.DepartmentNumber = result.getString("department");
             }
 
         } catch (SQLException throwables) {
