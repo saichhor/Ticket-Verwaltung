@@ -7,12 +7,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import jdk.jshell.execution.JdiExecutionControlProvider;
+
+import javax.swing.*;
 
 public class DepartmentController {
     public Button cancelButton;
-    public ListView<Department> statusListView;
     public TextField AbteilungTextField;
     public TextField AbteilungsNummerTextField;
+    public ListView<Department> DepartmentListView;
 
     private Department selectedItem = null;
 
@@ -20,7 +23,7 @@ public class DepartmentController {
         if (selectedItem != null) {
             selectedItem.Department1 = AbteilungTextField.getText();
 
-            statusListView.refresh();
+            DepartmentListView.refresh();
 
             selectedItem.update(); // Aktualisiere DB
 
@@ -29,7 +32,7 @@ public class DepartmentController {
 
     public void initialize() throws Exception{
 
-        statusListView.setItems(Department.readFile("departments.csv"));
+        DepartmentListView.setItems(Department.readFile("departments.csv"));
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
@@ -38,13 +41,20 @@ public class DepartmentController {
     }
 
     public void ListViewClicked(MouseEvent mouseEvent) {
-        Department department = statusListView.getSelectionModel().getSelectedItem();
+        Department department = DepartmentListView.getSelectionModel().getSelectedItem();
 
         if (department != null) {
             selectedItem = department;
         }
 
-        AbteilungsNummerTextField.setText((statusListView.getSelectionModel().getSelectedItem()).DepartmentNumber);
-        AbteilungTextField.setText((statusListView.getSelectionModel().getSelectedItem()).Department1);
+        AbteilungsNummerTextField.setText((DepartmentListView.getSelectionModel().getSelectedItem()).DepartmentNumber);
+        AbteilungTextField.setText((DepartmentListView.getSelectionModel().getSelectedItem()).Department1);
+    }
+
+    public void deleteButtonClicked(ActionEvent actionEvent) {
+        AbteilungTextField.clear();
+        DepartmentListView.getItems().remove(selectedItem);
+
+        selectedItem.delete();
     }
 }
