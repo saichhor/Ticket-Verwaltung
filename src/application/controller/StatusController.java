@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.Priority;
 import application.model.Status;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -20,7 +21,9 @@ public class StatusController {
     private Status selectedItem = null;
 
     public void initialize() {
-        statusListView.setItems(Status.readFile("stati.csv"));
+        statusListView.toString();
+
+        statusListView.setItems(Status.loadList());
     }
 
     public void ListViewclicked(MouseEvent mouseEvent) {
@@ -38,7 +41,7 @@ public class StatusController {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-    
+
     public void saveButtonClicked(ActionEvent actionEvent) {
         if (selectedItem != null) {
             selectedItem.StatusName = statusBeschreibungTextField1.getText();

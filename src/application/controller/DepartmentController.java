@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.Department;
+import application.model.Priority;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -31,8 +32,9 @@ public class DepartmentController {
     }
 
     public void initialize() throws Exception{
+        DepartmentListView.toString();
 
-        DepartmentListView.setItems(Department.readFile("departments.csv"));
+        DepartmentListView.setItems(Department.loadList());
     }
 
     public void cancelButtonClicked(ActionEvent actionEvent) {
