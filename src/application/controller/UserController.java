@@ -68,27 +68,9 @@ public class UserController {
             selectedItem.userStadt = userStadtTextField.getText();
             selectedItem.userAbteilung = userAbteilungTextField.getText();
 
-            overwrite();
+            userListView.refresh();
 
-        } else {
-            // erzeuge neuen Artikel, füge ihn in die ListView ein
-            // und speichere alles in die Datei
-            System.out.println("Neuer User");
-            String s;
-            try {
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("users.csv", true), "UTF-8"));
-                try {
-                    writer.write("\n\"" + userNummerTextField.getText() + "\";\"" + userTitelTextField.getText() + "\";\"" + userNameTextField.getText() + "\";\"" + userStrasseTextField.getText() + "\";\"" + userPLZTextField.getText() + "\";\"" + userStadtTextField.getText() + "\";\"" + userAbteilungTextField.getText() + "\";");
-                    list.clear();
-                    User a = new User();
-
-                } finally {
-                    writer.close();
-                }
-            } catch (IOException io) {
-                io.printStackTrace();
-            }
-            initialize();
+            selectedItem.update(); // Aktualisiere DB
         }
     }
 
