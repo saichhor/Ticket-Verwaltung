@@ -12,8 +12,9 @@
       <Button fx:id="cancelButton" layoutX="424.0" layoutY="360.0" mnemonicParsing="false" onAction="#cancelButtonClicked" text="Abbrechen" AnchorPane.bottomAnchor="14.666666666666686" AnchorPane.rightAnchor="102.0" />
       <TextField fx:id="statusNummerTextField" layoutX="264.0" layoutY="49.0" prefHeight="25.0" prefWidth="314.0" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="49.0" />
       <Label layoutX="293.0" layoutY="24.0" prefHeight="17.0" prefWidth="69.0" text="Status" AnchorPane.leftAnchor="293.0" AnchorPane.topAnchor="24.0" />
-      <Button layoutX="515.0" layoutY="360.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="14.666666666666668" AnchorPane.rightAnchor="16.33333333333333" />
+      <Button fx:id="saveButton" layoutX="515.0" layoutY="360.0" mnemonicParsing="false" onAction="#saveButtonClicked" text="Speichern" AnchorPane.bottomAnchor="14.666666666666668" AnchorPane.rightAnchor="16.33333333333333" />
       <ListView fx:id="statusListView" layoutX="23.0" layoutY="2.0" onMouseClicked="#ListViewclicked" prefHeight="268.0" prefWidth="262.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <TextField fx:id="statusBeschreibungTextField1" layoutX="264.0" layoutY="83.0" prefHeight="25.0" prefWidth="314.0" />
+      <Button fx:id="deleteButton" layoutX="332.0" layoutY="228.0" mnemonicParsing="false" onAction="#deleteButtonClicked" text="Löschen" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="193.0" />
    </children>
 </AnchorPane>

@@ -15,6 +15,7 @@ public class StatusController {
     public Button statusButton;
     public Button cancelButton;
     public TextField statusBeschreibungTextField1;
+    public Button deleteButton;
 
     private Status selectedItem = null;
 
@@ -37,17 +38,7 @@ public class StatusController {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-
-    public void statusButtonClicked(ActionEvent actionEvent) {
-        statusBeschreibungTextField1.clear();
-        statusListView.getItems().remove(selectedItem);
-
-        selectedItem.delete();
-    }
-
-    public void editStatiClicked(ActionEvent actionEvent) {
-    }
-
+    
     public void saveButtonClicked(ActionEvent actionEvent) {
         if (selectedItem != null) {
             selectedItem.StatusName = statusBeschreibungTextField1.getText();
@@ -56,5 +47,12 @@ public class StatusController {
 
             selectedItem.update(); // Aktualisiere DB
         }
+    }
+
+    public void deleteButtonClicked(ActionEvent actionEvent) {
+        statusBeschreibungTextField1.clear();
+        statusListView.getItems().remove(selectedItem);
+
+        selectedItem.delete();
     }
 }
