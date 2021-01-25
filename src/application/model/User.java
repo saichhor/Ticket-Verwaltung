@@ -32,13 +32,26 @@ public class User {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT  * FROM priorities");
+            ResultSet result = statement.executeQuery("SELECT  * FROM user");
 
             while(result.next()){
                 User u = new User();
-                u.userNummer = result.getString("name");
-                u.userTitel = result.getString("priority_id");
-
+                /**
+                (result.getInt("user_id"),
+                        result.getInt("name"),
+                        result.getInt("title"),
+                        result.getInt("street"),
+                        result.getInt("zip"),
+                        result.getInt("city"),
+                        result.getInt("department"));
+                 **/
+                u.userNummer = result.getString("user_id");
+                u.userTitel = result.getString("title");
+                u.userAbteilung = result.getString("department");
+                u.userStrasse = result.getString("street");
+                u.userStadt = result.getString("city");
+                u.userPLZ = result.getString("zip");
+                u.userName = result.getString("name");
                 list.add(u);
             }
         }catch (SQLException throwables){
