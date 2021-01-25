@@ -86,7 +86,7 @@ public class Department {
             
             if(result.next()) {
                 obj.Department1 = result.getString("department");
-                obj.DepartmentNumber = result.getString("department_number");
+                obj.DepartmentNumber = result.getString("name");
             }
 
         } catch (SQLException throwables) {
