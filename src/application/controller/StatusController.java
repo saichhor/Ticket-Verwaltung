@@ -39,6 +39,10 @@ public class StatusController {
     }
 
     public void statusButtonClicked(ActionEvent actionEvent) {
+        statusBeschreibungTextField1.clear();
+        statusListView.getItems().remove(selectedItem);
+
+        selectedItem.delete();
     }
 
     public void editStatiClicked(ActionEvent actionEvent) {

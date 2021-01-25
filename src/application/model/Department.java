@@ -75,6 +75,27 @@ public class Department {
         return Department1;
     }
 
+    public static  Department getById(int id) {
+        Department obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM departments WHERE department = " + id);
+            
+            if(result.next()) {
+                obj.Department1 = result.getString("department");
+                obj.DepartmentNumber = result.getString("department_number");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        
+        return obj;
+    }
+
     public void delete() {
         try {
             Connection connection = AccessDb.getConnection();

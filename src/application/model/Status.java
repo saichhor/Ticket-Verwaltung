@@ -80,7 +80,7 @@ public class Status {
 
             Statement statement = null;
             statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM priorities WHERE priority_id = " + StatusID);
+            statement.executeUpdate("DELETE FROM stati WHERE status__id = " + StatusID);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
