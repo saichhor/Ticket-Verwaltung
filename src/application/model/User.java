@@ -19,6 +19,10 @@ public class User {
     public String userStadt;
     public String userAbteilung;
 
+    public User() {
+
+    }
+
 
 
     public static ObservableList<User> readFile(String filename) {
