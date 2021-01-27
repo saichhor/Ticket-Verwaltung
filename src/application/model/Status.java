@@ -14,6 +14,12 @@ public class Status {
     public String StatusName;
     public String StatusID;
 
+    public Status(String status_id, String name) {
+        this.StatusName = status_id;
+        this.StatusID = name;
+
+    }
+
     public static ObservableList<Status> loadList(){
         ObservableList<Status> list = FXCollections.observableArrayList();
 
@@ -25,9 +31,8 @@ public class Status {
             ResultSet result = statement.executeQuery("SELECT  * FROM stati");
 
             while(result.next()){
-                Status s = new Status();
-                s.StatusName = result.getString("name");
-                s.StatusID = result.getString("status_id");
+                Status s = new Status(result.getString("name"), result.getString("status_id"));
+
                 list.add(s);
 
             }

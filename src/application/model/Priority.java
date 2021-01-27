@@ -15,6 +15,12 @@ public class Priority {
     public String priorityId;
     public String desc;
 
+    public Priority(String priority_id, String name){
+        this.priorityId = priority_id;
+        this.desc = name;
+
+    }
+
 
     public static ObservableList<Priority> readFile(String filename) {
         return readFile(new File(filename));
@@ -32,9 +38,8 @@ public class Priority {
             ResultSet result = statement.executeQuery("SELECT * FROM priorities");
 
             while (result.next()) {
-                Priority p = new Priority();
-                p.desc = result.getString("name");
-                p.priorityId = result.getString("priority_id");
+                Priority p = new Priority(result.getString("priority_id"),result.getString("name"));
+
 
                 list.add(p);
 

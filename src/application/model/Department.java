@@ -16,6 +16,13 @@ public class Department {
     public String Department1;
     public String DepartmentNumber;
 
+    public Department(String department, String name) {
+        this.Department1 = name;
+        this.DepartmentNumber = department;
+    }
+
+
+
     public static ObservableList<Department> readFile(String filename){
         return readFile(new File(filename));
     }
@@ -31,9 +38,8 @@ public class Department {
             ResultSet result = statement.executeQuery("SELECT  * FROM departments");
 
             while(result.next()){
-                Department d = new Department();
-                d.Department1 = result.getString("name");
-                d.DepartmentNumber = result.getString("department");
+                Department d = new Department(result.getString("name"),result.getString("department"));
+
 
                 list.add(d);
             }

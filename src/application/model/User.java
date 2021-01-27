@@ -11,16 +11,16 @@ import java.sql.*;
 
 public class User {
 
-    public int userNummer;
+    public String userNummer;
     public String userTitel;
     public String userName;
     public String userStrasse;
-    public int userPLZ;
+    public String userPLZ;
     public String userStadt;
     public Department userAbteilung;
 
 
-    public User(int user_id, String title, String name, String street, int zip, String city, int departmentId) {
+    public User(String user_id, String title, String name, String street, String zip, String city, String departmentId) {
         this.userNummer = user_id;
         this.userTitel = title;
         this.userName = name;
@@ -49,13 +49,13 @@ public class User {
             ResultSet result = statement.executeQuery("SELECT  * FROM user");
 
             while(result.next()){
-                User u = new User(result.getInt("user_id"),
-                        result.getInt("name"),
-                        result.getInt("title"),
-                        result.getInt("street"),
-                        result.getInt("zip"),
-                        result.getInt("city"),
-                        result.getInt("department"));
+                User u = new User(result.getString("user_id"),
+                        result.getString("name"),
+                        result.getString("title"),
+                        result.getString("street"),
+                        result.getString("zip"),
+                        result.getString("city"),
+                        result.getString("department"));
 
 
                 /**

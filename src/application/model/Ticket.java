@@ -20,6 +20,17 @@ public class Ticket {
     public Status status;
     public Priority prioritaet;
 
+    public Ticket(String ticket_id, String name, String desc, String priotity_id, String status_id, String order_id) {
+        this.id = ticket_id;
+        this.name = name;
+        this.beschreibung = desc;
+
+
+        this.status = Department.getById(status_id);
+
+        this.prioritaet = Department.getById(priotity_id);
+    }
+
     public static ObservableList<Ticket> readFile(String filename){
         return readFile(new File(filename));
     }
