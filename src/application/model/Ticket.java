@@ -20,17 +20,18 @@ public class Ticket {
     public Status status;
     public Priority prioritaet;
 
-    public Ticket(String ticket_id, String name, String desc, int priotity_id, int status_id, String order_id) {
+    public Ticket(String ticket_id, String name, String desc, int priotity_id, int status_id) {
         this.id = ticket_id;
         this.name = name;
         this.beschreibung = desc;
         this.status = Status.getById(status_id);
         this.prioritaet = Priority.getById(priotity_id);
     }
-
+/**
     public static ObservableList<Ticket> readFile(String filename){
         return readFile(new File(filename));
     }
+ **/
 
     public static ObservableList<Ticket> loadList(){
         ObservableList<Ticket> list = FXCollections.observableArrayList();
@@ -40,10 +41,10 @@ public class Ticket {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT  * FROM priorities");
+            ResultSet result = statement.executeQuery("SELECT  * FROM tickets");
 
             while(result.next()){
-                Ticket t = new Ticket(result.getString("name"), result.getString("priority_id"), result.getString("Beschreibung"), result.get);
+                Ticket t = new Ticket(result.getString("ticket_id"), result.getString("name"),result.getString("desc"), result.getInt("priority_id"), result.getInt("status_id"));
 
 
                 list.add(t);
@@ -55,6 +56,7 @@ public class Ticket {
 
         return list;
     }
+    /**
 
     public static ObservableList<Ticket> readFile(File file){
         ObservableList<Ticket> list = FXCollections.observableArrayList();
@@ -87,6 +89,7 @@ public class Ticket {
         }
         return list;
     }
+     **/
 
     public static  Ticket getById(int id) {
         Ticket obj = null;
@@ -98,11 +101,12 @@ public class Ticket {
             ResultSet result = statement.executeQuery("SELECT * FROM ticktes WHERE ticket_id = " + id);
 
             if(result.next()) {
-                obj.id = result.getString("ticket_id");
-                obj.name = result.getString("name");
-                obj.beschreibung = result.getString("desc");
-                obj.status = result.getString("status_id");
-                obj.prioritaet = result.getString("priority_id");
+                obj = new Ticket(result.getString("ticket_id"),
+                        result.getString("name"),
+                        result.getString("desc"),
+                        result.getInt("priority_id"),
+                        result.getInt("status_id"));
+
 
 
             }

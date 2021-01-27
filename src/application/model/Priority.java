@@ -22,9 +22,11 @@ public class Priority {
     }
 
 
+    /**
     public static ObservableList<Priority> readFile(String filename) {
         return readFile(new File(filename));
     }
+     **/
 
 
     public static ObservableList<Priority> loadList() {
@@ -54,6 +56,7 @@ public class Priority {
 
         return list;
     }
+    /**
 
     public static ObservableList<Priority> readFile(File file) {
         ObservableList<Priority> list = FXCollections.observableArrayList();
@@ -83,7 +86,7 @@ public class Priority {
     public String toString() {
         return desc;
     }
-
+**/
     public void delete() {
         try {
             Connection connection = AccessDb.getConnection();
@@ -122,8 +125,8 @@ public class Priority {
             ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE priotity_id = " + id);
 
             if(result.next()) {
-                obj.priorityId = result.getString("priotity_id");
-                obj.desc = result.getString("name");
+                obj = new Priority(result.getString("priotity_id"),result.getString("name"));
+
             }
 
         } catch (SQLException throwables) {

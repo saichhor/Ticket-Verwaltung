@@ -31,7 +31,7 @@ public class Status {
             ResultSet result = statement.executeQuery("SELECT  * FROM stati");
 
             while(result.next()){
-                Status s = new Status(result.getString("name"), result.getString("status_id"));
+                Status s = new Status(result.getString("status_id"), result.getString("name"));
 
                 list.add(s);
 
@@ -46,6 +46,7 @@ public class Status {
     
 
 
+    /**
     public static ObservableList<Status> readFile(String filename){
         return readFile(new File(filename));
     }
@@ -74,6 +75,7 @@ public class Status {
         return list;
     }
 
+     **/
     @Override
     public String toString() {
         return StatusName;
@@ -116,10 +118,7 @@ public class Status {
             ResultSet result = statement.executeQuery("SELECT * FROM stati WHERE status_id = " + id);
 
             if(result.next()) {
-                obj.StatusID = result.getString("status_id");
-                obj.StatusName = result.getString("name");
-
-
+                obj = new Status(result.getString("status_id"), result.getString("name"));
 
             }
 

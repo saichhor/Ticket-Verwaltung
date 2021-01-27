@@ -31,14 +31,13 @@ public class User {
         this.userAbteilung = Department.getById(departmentId);
     }
 
-
-
-
+    /*
     public static ObservableList<User> readFile(String filename) {
         return readFile(new File(filename));
     }
+    */
 
-    public static ObservableList<User> loadList(){
+    public static ObservableList<User> loadList() {
         ObservableList<User> list = FXCollections.observableArrayList();
 
         try {
@@ -48,10 +47,10 @@ public class User {
             statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT  * FROM user");
 
-            while(result.next()){
+            while (result.next()) {
                 User u = new User(result.getString("user_id"),
-                        result.getString("name"),
                         result.getString("title"),
+                        result.getString("name"),
                         result.getString("street"),
                         result.getString("zip"),
                         result.getString("city"),
@@ -59,18 +58,18 @@ public class User {
 
 
                 /**
-                u.userNummer = result.getString("user_id");
-                u.userTitel = result.getString("title");
-                u.userAbteilung = result.getString("department");
-                u.userStrasse = result.getString("street");
-                u.userStadt = result.getString("city");
-                u.userPLZ = result.getString("zip");
-                u.userName = result.getString("name");
+                 u.userNummer = result.getString("user_id");
+                 u.userTitel = result.getString("title");
+                 u.userAbteilung = result.getString("department");
+                 u.userStrasse = result.getString("street");
+                 u.userStadt = result.getString("city");
+                 u.userPLZ = result.getString("zip");
+                 u.userName = result.getString("name");
                  **/
 
                 list.add(u);
             }
-        }catch (SQLException throwables){
+        } catch (SQLException throwables) {
 
             throwables.printStackTrace();
         }
@@ -78,6 +77,7 @@ public class User {
         return list;
     }
 
+    /*
     public static ObservableList<User> readFile(File file) {
         ObservableList<User> list = FXCollections.observableArrayList();
         String s;
@@ -109,6 +109,8 @@ public class User {
         return list;
     }
 
+     */
+
     @Override
     public String toString() {
         return userName;
@@ -127,8 +129,8 @@ public class User {
         }
     }
 
-    public void update(){
-        try{
+    public void update() {
+        try {
             Connection connection = AccessDb.getConnection();
 
             PreparedStatement statement = null;
@@ -137,11 +139,12 @@ public class User {
             statement.setInt(2, Integer.parseInt(userNummer));
 
             statement.execute();
-        }catch (SQLException throwables){
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-    public static  User getById(int id) {
+
+    public static User getById(int id) {
         User obj = null;
         try {
             Connection connection = AccessDb.getConnection();
@@ -150,17 +153,14 @@ public class User {
             statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM user WHERE user_id = " + id);
 
-            if(result.next()) {
-                obj.userNummer = result.getString("user_id");
-                obj.userTitel = result.getString("title");
-                obj.userName = result.getString("name");
-                obj.userStrasse = result.getString("street");
-                obj.userPLZ = result.getString("zip");
-                obj.userStadt = result.getString("city");
-                obj.userAbteilung = result.getString("department");
-
-
-
+            if (result.next()) {
+                obj = new User(result.getString("user_id"),
+                        result.getString("title"),
+                        result.getString("name"),
+                        result.getString("street"),
+                        result.getString("zip"),
+                        result.getString("city"),
+                        result.getInt("department"));
             }
 
         } catch (SQLException throwables) {
