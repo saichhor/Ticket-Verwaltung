@@ -9,10 +9,20 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 
+
+
 public class Department {
 
     public String Department1;
     public String DepartmentNumber;
+
+
+
+
+
+
+
+
 
 
     public static ObservableList<Department> readFile(String filename){

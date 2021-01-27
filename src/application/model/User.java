@@ -19,8 +19,15 @@ public class User {
     public String userStadt;
     public String userAbteilung;
 
-    public User() {
+    public User(int id, String title, String name, String street, int zip, String city, int departmentId) {
+        this.userNummer = id;
+        this.userTitel = title;
+        this.userName = name;
+        this.userStrasse = street;
+        this.userPLZ = zip;
+        this.userStadt = city;
 
+        this.userAbteilung = Department.getById(departmentId);
     }
 
 
