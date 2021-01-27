@@ -17,10 +17,11 @@ public class User {
     public String userStrasse;
     public String userPLZ;
     public String userStadt;
-    public String userAbteilung;
+    public Department userAbteilung;
 
-    public User(int id, String title, String name, String street, int zip, String city, int departmentId) {
-        this.userNummer = id;
+
+    public User(String user_id, String title, String name, String street, String zip, String city, int departmentId) {
+        this.userNummer = user_id;
         this.userTitel = title;
         this.userName = name;
         this.userStrasse = street;
@@ -30,13 +31,13 @@ public class User {
         this.userAbteilung = Department.getById(departmentId);
     }
 
-
-
+    /*
     public static ObservableList<User> readFile(String filename) {
         return readFile(new File(filename));
     }
+    */
 
-    public static ObservableList<User> loadList(){
+    public static ObservableList<User> loadList() {
         ObservableList<User> list = FXCollections.observableArrayList();
 
         try {
@@ -46,28 +47,29 @@ public class User {
             statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT  * FROM user");
 
-            while(result.next()){
-                User u = new User();
-                /**
-                (result.getInt("user_id"),
-                        result.getInt("name"),
-                        result.getInt("title"),
-                        result.getInt("street"),
-                        result.getInt("zip"),
-                        result.getInt("city"),
+            while (result.next()) {
+                User u = new User(result.getString("user_id"),
+                        result.getString("title"),
+                        result.getString("name"),
+                        result.getString("street"),
+                        result.getString("zip"),
+                        result.getString("city"),
                         result.getInt("department"));
-                 das oben nur wenn man construktor macht
+
+
+                /**
+                 u.userNummer = result.getString("user_id");
+                 u.userTitel = result.getString("title");
+                 u.userAbteilung = result.getString("department");
+                 u.userStrasse = result.getString("street");
+                 u.userStadt = result.getString("city");
+                 u.userPLZ = result.getString("zip");
+                 u.userName = result.getString("name");
                  **/
-                u.userNummer = result.getString("user_id");
-                u.userTitel = result.getString("title");
-                u.userAbteilung = result.getString("department");
-                u.userStrasse = result.getString("street");
-                u.userStadt = result.getString("city");
-                u.userPLZ = result.getString("zip");
-                u.userName = result.getString("name");
+
                 list.add(u);
             }
-        }catch (SQLException throwables){
+        } catch (SQLException throwables) {
 
             throwables.printStackTrace();
         }
@@ -75,6 +77,7 @@ public class User {
         return list;
     }
 
+    /*
     public static ObservableList<User> readFile(File file) {
         ObservableList<User> list = FXCollections.observableArrayList();
         String s;
@@ -106,6 +109,8 @@ public class User {
         return list;
     }
 
+     */
+
     @Override
     public String toString() {
         return userName;
@@ -124,8 +129,8 @@ public class User {
         }
     }
 
-    public void update(){
-        try{
+    public void update() {
+        try {
             Connection connection = AccessDb.getConnection();
 
             PreparedStatement statement = null;
@@ -134,9 +139,35 @@ public class User {
             statement.setInt(2, Integer.parseInt(userNummer));
 
             statement.execute();
-        }catch (SQLException throwables){
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public static User getById(int id) {
+        User obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM user WHERE user_id = " + id);
+
+            if (result.next()) {
+                obj = new User(result.getString("user_id"),
+                        result.getString("title"),
+                        result.getString("name"),
+                        result.getString("street"),
+                        result.getString("zip"),
+                        result.getString("city"),
+                        result.getInt("department"));
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return obj;
     }
 }
 

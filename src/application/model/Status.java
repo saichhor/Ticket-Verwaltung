@@ -14,6 +14,12 @@ public class Status {
     public String StatusName;
     public String StatusID;
 
+    public Status(String status_id, String name) {
+        this.StatusName = status_id;
+        this.StatusID = name;
+
+    }
+
     public static ObservableList<Status> loadList(){
         ObservableList<Status> list = FXCollections.observableArrayList();
 
@@ -25,9 +31,8 @@ public class Status {
             ResultSet result = statement.executeQuery("SELECT  * FROM stati");
 
             while(result.next()){
-                Status s = new Status();
-                s.StatusName = result.getString("name");
-                s.StatusID = result.getString("status_id");
+                Status s = new Status(result.getString("status_id"), result.getString("name"));
+
                 list.add(s);
 
             }
@@ -41,6 +46,7 @@ public class Status {
     
 
 
+    /**
     public static ObservableList<Status> readFile(String filename){
         return readFile(new File(filename));
     }
@@ -69,6 +75,7 @@ public class Status {
         return list;
     }
 
+     **/
     @Override
     public String toString() {
         return StatusName;
@@ -100,5 +107,25 @@ public class Status {
         }catch (SQLException throwables){
             throwables.printStackTrace();
         }
+    }
+    public static  Status getById(int id) {
+        Status obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM stati WHERE status_id = " + id);
+
+            if(result.next()) {
+                obj = new Status(result.getString("status_id"), result.getString("name"));
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return obj;
     }
 }

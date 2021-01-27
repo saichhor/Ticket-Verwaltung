@@ -10,26 +10,24 @@ import java.io.IOException;
 import java.sql.*;
 
 
-
 public class Department {
 
     public String Department1;
     public String DepartmentNumber;
 
-
-
-
-
-
-
-
-
-
-    public static ObservableList<Department> readFile(String filename){
-        return readFile(new File(filename));
+    public Department(String department, String name) {
+        this.Department1 = name;
+        this.DepartmentNumber = department;
     }
 
-    public static ObservableList<Department> loadList(){
+
+    /**
+     * public static ObservableList<Department> readFile(String filename){
+     * return readFile(new File(filename));
+     * }
+     **/
+
+    public static ObservableList<Department> loadList() {
         ObservableList<Department> list = FXCollections.observableArrayList();
 
         try {
@@ -39,14 +37,13 @@ public class Department {
             statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT  * FROM departments");
 
-            while(result.next()){
-                Department d = new Department();
-                d.Department1 = result.getString("name");
-                d.DepartmentNumber = result.getString("department");
+            while (result.next()) {
+                Department d = new Department( result.getString("department"),result.getString("name"));
+
 
                 list.add(d);
             }
-        }catch (SQLException throwables){
+        } catch (SQLException throwables) {
 
             throwables.printStackTrace();
         }
@@ -54,38 +51,38 @@ public class Department {
         return list;
     }
 
-    public static ObservableList<Department> readFile(File file){
-        ObservableList<Department> list = FXCollections.observableArrayList();
-        String s;
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            try {
-
-                while ((s = br.readLine()) != null) {
-                    s = s.replace("\"", "");
-                    String[] words = s.split(";");
-                    Department a = new Department();
-                    a.DepartmentNumber = words[0];
-                    a.Department1 = words[1];
-                    list.add(a);
-                }
-            } finally {
-                br.close();
-            }
-        }catch (IOException io){
-            io.printStackTrace();
-        }
-        return list;
-    }
-
-
+    /**
+     * public static ObservableList<Department> readFile(File file){
+     * ObservableList<Department> list = FXCollections.observableArrayList();
+     * String s;
+     * try {
+     * BufferedReader br = new BufferedReader(new FileReader(file));
+     * try {
+     * <p>
+     * while ((s = br.readLine()) != null) {
+     * s = s.replace("\"", "");
+     * String[] words = s.split(";");
+     * Department a = new Department();
+     * a.DepartmentNumber = words[0];
+     * a.Department1 = words[1];
+     * list.add(a);
+     * }
+     * } finally {
+     * br.close();
+     * }
+     * }catch (IOException io){
+     * io.printStackTrace();
+     * }
+     * return list;
+     * }
+     **/
 
     @Override
     public String toString() {
         return Department1;
     }
 
-    public static  Department getById(int id) {
+    public static Department getById(int id) {
         Department obj = null;
         try {
             Connection connection = AccessDb.getConnection();
@@ -93,16 +90,16 @@ public class Department {
             Statement statement = null;
             statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM departments WHERE department = " + id);
-            
-            if(result.next()) {
-                obj.Department1 = result.getString("name");
-                obj.DepartmentNumber = result.getString("department");
+
+            if (result.next()) {
+                obj = new Department(result.getString("department"), result.getString("name"));
+
             }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        
+
         return obj;
     }
 
@@ -119,8 +116,8 @@ public class Department {
         }
     }
 
-    public void update(){
-        try{
+    public void update() {
+        try {
             Connection connection = AccessDb.getConnection();
 
             PreparedStatement statement = null;
@@ -129,7 +126,7 @@ public class Department {
             statement.setInt(2, Integer.parseInt(DepartmentNumber));
 
             statement.execute();
-        }catch (SQLException throwables){
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }

@@ -15,10 +15,18 @@ public class Priority {
     public String priorityId;
     public String desc;
 
+    public Priority(String priority_id, String name){
+        this.priorityId = priority_id;
+        this.desc = name;
 
+    }
+
+
+    /**
     public static ObservableList<Priority> readFile(String filename) {
         return readFile(new File(filename));
     }
+     **/
 
 
     public static ObservableList<Priority> loadList() {
@@ -32,9 +40,8 @@ public class Priority {
             ResultSet result = statement.executeQuery("SELECT * FROM priorities");
 
             while (result.next()) {
-                Priority p = new Priority();
-                p.desc = result.getString("name");
-                p.priorityId = result.getString("priority_id");
+                Priority p = new Priority(result.getString("priority_id"),result.getString("name"));
+
 
                 list.add(p);
 
@@ -49,6 +56,7 @@ public class Priority {
 
         return list;
     }
+    /**
 
     public static ObservableList<Priority> readFile(File file) {
         ObservableList<Priority> list = FXCollections.observableArrayList();
@@ -78,7 +86,7 @@ public class Priority {
     public String toString() {
         return desc;
     }
-
+**/
     public void delete() {
         try {
             Connection connection = AccessDb.getConnection();
@@ -105,6 +113,27 @@ public class Priority {
         }catch (SQLException throwables){
             throwables.printStackTrace();
         }
+    }
+
+    public static  Priority getById(int id) {
+        Priority obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE priotity_id = " + id);
+
+            if(result.next()) {
+                obj = new Priority(result.getString("priotity_id"),result.getString("name"));
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return obj;
     }
 
 }
