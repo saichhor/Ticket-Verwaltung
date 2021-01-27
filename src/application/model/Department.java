@@ -9,10 +9,20 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 
+
+
 public class Department {
 
     public String Department1;
     public String DepartmentNumber;
+
+
+
+
+
+
+
+
 
 
     public static ObservableList<Department> readFile(String filename){
@@ -85,8 +95,8 @@ public class Department {
             ResultSet result = statement.executeQuery("SELECT * FROM departments WHERE department = " + id);
             
             if(result.next()) {
-                obj.Department1 = result.getString("department");
-                obj.DepartmentNumber = result.getString("name");
+                obj.Department1 = result.getString("name");
+                obj.DepartmentNumber = result.getString("department");
             }
 
         } catch (SQLException throwables) {
