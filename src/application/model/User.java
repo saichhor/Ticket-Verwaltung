@@ -11,16 +11,17 @@ import java.sql.*;
 
 public class User {
 
-    public String userNummer;
+    public int userNummer;
     public String userTitel;
     public String userName;
     public String userStrasse;
-    public String userPLZ;
+    public int userPLZ;
     public String userStadt;
-    public String userAbteilung;
+    public Department userAbteilung;
 
-    public User(int id, String title, String name, String street, int zip, String city, int departmentId) {
-        this.userNummer = id;
+
+    public User(int user_id, String title, String name, String street, int zip, String city, int departmentId) {
+        this.userNummer = user_id;
         this.userTitel = title;
         this.userName = name;
         this.userStrasse = street;
@@ -29,6 +30,7 @@ public class User {
 
         this.userAbteilung = Department.getById(departmentId);
     }
+
 
 
 
@@ -47,17 +49,16 @@ public class User {
             ResultSet result = statement.executeQuery("SELECT  * FROM user");
 
             while(result.next()){
-                User u = new User();
-                /**
-                (result.getInt("user_id"),
+                User u = new User(result.getInt("user_id"),
                         result.getInt("name"),
                         result.getInt("title"),
                         result.getInt("street"),
                         result.getInt("zip"),
                         result.getInt("city"),
                         result.getInt("department"));
-                 das oben nur wenn man construktor macht
-                 **/
+
+
+                /**
                 u.userNummer = result.getString("user_id");
                 u.userTitel = result.getString("title");
                 u.userAbteilung = result.getString("department");
@@ -65,6 +66,8 @@ public class User {
                 u.userStadt = result.getString("city");
                 u.userPLZ = result.getString("zip");
                 u.userName = result.getString("name");
+                 **/
+
                 list.add(u);
             }
         }catch (SQLException throwables){

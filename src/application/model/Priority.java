@@ -107,4 +107,25 @@ public class Priority {
         }
     }
 
+    public static  Priority getById(int id) {
+        Priority obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE priotity_id = " + id);
+
+            if(result.next()) {
+                obj.Department1 = result.getString("name");
+                obj.DepartmentNumber = result.getString("department");
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return obj;
+    }
+
 }
