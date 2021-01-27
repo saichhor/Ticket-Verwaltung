@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.Priority;
 import application.model.Status;
 import application.model.User;
 import javafx.collections.FXCollections;
@@ -29,8 +30,10 @@ public class UserController {
 
     private User selectedItem = null;
 
-    public void initialize(){
-        userListView.setItems(User.readFile("users.csv"));
+    public void initialize() {
+        userListView.toString();
+
+        userListView.setItems(User.loadList());
     }
 
     public void ListViewclicked(MouseEvent mouseEvent) {
