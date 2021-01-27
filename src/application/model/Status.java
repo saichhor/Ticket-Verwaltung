@@ -106,4 +106,27 @@ public class Status {
             throwables.printStackTrace();
         }
     }
+    public static  Status getById(int id) {
+        Status obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM stati WHERE status_id = " + id);
+
+            if(result.next()) {
+                obj.StatusID = result.getString("status_id");
+                obj.StatusName = result.getString("name");
+
+
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return obj;
+    }
 }

@@ -20,15 +20,12 @@ public class Ticket {
     public Status status;
     public Priority prioritaet;
 
-    public Ticket(String ticket_id, String name, String desc, String priotity_id, String status_id, String order_id) {
+    public Ticket(String ticket_id, String name, String desc, int priotity_id, int status_id, String order_id) {
         this.id = ticket_id;
         this.name = name;
         this.beschreibung = desc;
-
-
-        this.status = Department.getById(status_id);
-
-        this.prioritaet = Department.getById(priotity_id);
+        this.status = Status.getById(status_id);
+        this.prioritaet = Priority.getById(priotity_id);
     }
 
     public static ObservableList<Ticket> readFile(String filename){
@@ -46,10 +43,8 @@ public class Ticket {
             ResultSet result = statement.executeQuery("SELECT  * FROM priorities");
 
             while(result.next()){
-                Ticket t = new Ticket();
-                t.id = result.getString("name");
-                t.name = result.getString("priority_id");
-                t.beschreibung = result.getString("Beschreibung");
+                Ticket t = new Ticket(result.getString("name"), result.getString("priority_id"), result.getString("Beschreibung"), result.get);
+
 
                 list.add(t);
             }
@@ -91,6 +86,32 @@ public class Ticket {
             io.printStackTrace();
         }
         return list;
+    }
+
+    public static  Ticket getById(int id) {
+        Ticket obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM ticktes WHERE ticket_id = " + id);
+
+            if(result.next()) {
+                obj.id = result.getString("ticket_id");
+                obj.name = result.getString("name");
+                obj.beschreibung = result.getString("desc");
+                obj.status = result.getString("status_id");
+                obj.prioritaet = result.getString("priority_id");
+
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return obj;
     }
 
     @Override

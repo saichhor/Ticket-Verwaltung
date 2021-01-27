@@ -122,8 +122,8 @@ public class Priority {
             ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE priotity_id = " + id);
 
             if(result.next()) {
-                obj.Department1 = result.getString("name");
-                obj.DepartmentNumber = result.getString("department");
+                obj.priorityId = result.getString("priotity_id");
+                obj.desc = result.getString("name");
             }
 
         } catch (SQLException throwables) {

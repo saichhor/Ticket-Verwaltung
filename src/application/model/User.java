@@ -20,7 +20,7 @@ public class User {
     public Department userAbteilung;
 
 
-    public User(String user_id, String title, String name, String street, String zip, String city, String departmentId) {
+    public User(String user_id, String title, String name, String street, String zip, String city, int departmentId) {
         this.userNummer = user_id;
         this.userTitel = title;
         this.userName = name;
@@ -55,7 +55,7 @@ public class User {
                         result.getString("street"),
                         result.getString("zip"),
                         result.getString("city"),
-                        result.getString("department"));
+                        result.getInt("department"));
 
 
                 /**
@@ -140,6 +140,34 @@ public class User {
         }catch (SQLException throwables){
             throwables.printStackTrace();
         }
+    }
+    public static  User getById(int id) {
+        User obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM user WHERE user_id = " + id);
+
+            if(result.next()) {
+                obj.userNummer = result.getString("user_id");
+                obj.userTitel = result.getString("title");
+                obj.userName = result.getString("name");
+                obj.userStrasse = result.getString("street");
+                obj.userPLZ = result.getString("zip");
+                obj.userStadt = result.getString("city");
+                obj.userAbteilung = result.getString("department");
+
+
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return obj;
     }
 }
 
