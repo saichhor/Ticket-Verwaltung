@@ -49,7 +49,7 @@ public class UserController {
         userStrasseTextField.setText(userListView.getSelectionModel().getSelectedItem().userStrasse);
         userPLZTextField.setText(userListView.getSelectionModel().getSelectedItem().userPLZ);
         userStadtTextField.setText(userListView.getSelectionModel().getSelectedItem().userStadt);
-        userAbteilungTextField.setText(userListView.getSelectionModel().getSelectedItem().userAbteilung);
+        userAbteilungTextField.setText(String.valueOf(userListView.getSelectionModel().getSelectedItem().userAbteilung));
 
     }
 
