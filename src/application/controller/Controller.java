@@ -47,7 +47,7 @@ public class Controller {
          **/
         filterStatusCombobox.setItems(Status.loadList());
         filterPrioritätCombobox.setItems(Priority.loadList());
-        ticketListView.setItems(Ticket.readFile("tickets.csv"));
+        ticketListView.setItems(Ticket.loadList());
     }
 
     public void priorityButtonClicked(ActionEvent actionEvent) {

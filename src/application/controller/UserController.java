@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.Department;
 import application.model.Priority;
 import application.model.Status;
 import application.model.User;
@@ -7,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -21,10 +23,10 @@ public class UserController {
     public TextField userStrasseTextField;
     public TextField userPLZTextField;
     public TextField userStadtTextField;
-    public TextField userAbteilungTextField;
     public ListView<User> userListView;
     public TextField userNummerTextField;
     public TextField userNameTextField;
+    public ComboBox<Department> departmentBox;
 
     ObservableList<User> list = FXCollections.observableArrayList();
 
@@ -49,7 +51,7 @@ public class UserController {
         userStrasseTextField.setText(userListView.getSelectionModel().getSelectedItem().userStrasse);
         userPLZTextField.setText(userListView.getSelectionModel().getSelectedItem().userPLZ);
         userStadtTextField.setText(userListView.getSelectionModel().getSelectedItem().userStadt);
-        userAbteilungTextField.setText(String.valueOf(userListView.getSelectionModel().getSelectedItem().userAbteilung));
+        departmentBox.getItems();
 
     }
 
@@ -69,10 +71,9 @@ public class UserController {
             selectedItem.userStrasse = userStrasseTextField.getText();
             selectedItem.userPLZ = userPLZTextField.getText();
             selectedItem.userStadt = userStadtTextField.getText();
-            selectedItem.userAbteilung = userAbteilungTextField.getText();
+            selectedItem.userAbteilung = (Department) departmentBox.getItems();
 
             userListView.refresh();
-
             selectedItem.update(); // Aktualisiere DB
         }
     }
@@ -84,7 +85,6 @@ public class UserController {
         userStrasseTextField.clear();
         userPLZTextField.clear();
         userStadtTextField.clear();
-        userAbteilungTextField.clear();
 
         // lösche die Variable, die den gewählten Artikel
         // beinhaltet
@@ -111,4 +111,5 @@ public class UserController {
             io.printStackTrace();
         }
     }
+
 }
