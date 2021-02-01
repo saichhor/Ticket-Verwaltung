@@ -101,7 +101,7 @@ public class Ticket {
             ResultSet result = statement.executeQuery("SELECT * FROM ticktes WHERE ticket_id = " + id);
 
             if(result.next()) {
-                obj = new Ticket(result.getString("ticket_id"),
+                obj = new Ticket(result.getString("ticket_id"),//Konstruktor gemacht und befüllt
                         result.getString("name"),
                         result.getString("desc"),
                         result.getInt("priority_id"),
