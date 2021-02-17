@@ -34,10 +34,12 @@ public class PriorityController {
             selectedItem.update(); // Aktualisiere DB
         }else{
             if(!priorityField.getText().isEmpty()){
+
                 Priority s = new Priority(0, priorityField.getText());
                 s.insert();
 
                 priorityListView.getItems().add(s);
+
             }
             //insert intodataba
             /**
@@ -77,7 +79,8 @@ public class PriorityController {
     }
 
     public void createButtonClicked(ActionEvent actionEvent) {
-
+        priorityField.clear();
+        selectedItem = null;
 
     }
 

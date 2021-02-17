@@ -17,6 +17,7 @@ import java.io.IOException;
 
 public class TicketController {
 
+    public ComboBox orderComboBox;
     private Ticket ticket;
     public TextField titelTextField;
     public TextArea commentTextField;
@@ -52,8 +53,8 @@ public class TicketController {
                     break;
                 }
             }
-        }
 
+        }
     }
 
     public Ticket getTicket() {

@@ -45,7 +45,7 @@ public class User {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT  * FROM user");
+            ResultSet result = statement.executeQuery("SELECT  * FROM users");
 
             while (result.next()) {
                 User u = new User(result.getString("user_id"),
@@ -71,7 +71,7 @@ public class User {
             }
         } catch (SQLException throwables) {
 
-            throwables.printStackTrace();
+            //throwables.printStackTrace();
         }
 
         return list;

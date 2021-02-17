@@ -139,10 +139,10 @@ public class Priority {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE priotity_id = " + id);
+            ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE priority_id = " + id);
 
             if(result.next()) {
-                obj = new Priority(result.getInt("priotity_id"),result.getString("name"));
+                obj = new Priority(result.getInt("priority_id"),result.getString("name"));
 
             }
 
