@@ -33,6 +33,12 @@ public class PriorityController {
 
             selectedItem.update(); // Aktualisiere DB
         }else{
+            if(!priorityField.getText().isEmpty()){
+                Priority s = new Priority(0, priorityField.getText());
+                s.insert();
+
+                priorityListView.getItems().add(s);
+            }
             //insert intodataba
             /**
             if(!priorityField.getText().isEmpty()){
@@ -43,6 +49,8 @@ public class PriorityController {
 
         }
            **/
+
+
         }
 
     }

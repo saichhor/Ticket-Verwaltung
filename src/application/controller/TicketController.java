@@ -47,7 +47,7 @@ public class TicketController {
                 }
             }
             for (Priority p : priorityComboBox.getItems()) {
-                if (p.priorityId.equals(t.prioritaet.priorityId)) {
+                if (p.priorityId == (t.prioritaet.priorityId)) {
                     priorityComboBox.getSelectionModel().select(p);
                     break;
                 }

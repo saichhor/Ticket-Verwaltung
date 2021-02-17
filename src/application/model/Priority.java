@@ -12,14 +12,16 @@ import java.sql.*;
 
 public class Priority {
 
-    public String priorityId;
+    public int priorityId;
     public String desc;
 
-    public Priority(String priority_id, String name){
+    public Priority(int priority_id, String name){
         this.priorityId = priority_id;
         this.desc = name;
 
     }
+
+
 
 
     /**
@@ -40,7 +42,7 @@ public class Priority {
             ResultSet result = statement.executeQuery("SELECT * FROM priorities");
 
             while (result.next()) {
-                Priority p = new Priority(result.getString("priority_id"),result.getString("name"));
+                Priority p = new Priority(result.getInt("priority_id"),result.getString("name"));
 
 
                 list.add(p);
@@ -100,6 +102,21 @@ public class Priority {
         }
     }
 
+    public void insert(){
+        try{
+            Connection connection = AccessDb.getConnection();
+
+            PreparedStatement statement = null;
+            statement = connection.prepareStatement("INSERT INTO priorities (name) VALUES (?)");
+            statement.setString(1, desc);
+
+
+            statement.executeUpdate();
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+    }
+
     public void update(){
         try{
             Connection connection = AccessDb.getConnection();
@@ -107,7 +124,7 @@ public class Priority {
             PreparedStatement statement = null;
             statement = connection.prepareStatement("UPDATE priorities SET name = ? WHERE priority_id = ?");
             statement.setString(1, desc);
-            statement.setInt(2, Integer.parseInt(priorityId));
+            statement.setInt(2, Integer.parseInt(String.valueOf(priorityId)));
 
             statement.execute();
         }catch (SQLException throwables){
@@ -125,7 +142,7 @@ public class Priority {
             ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE priotity_id = " + id);
 
             if(result.next()) {
-                obj = new Priority(result.getString("priotity_id"),result.getString("name"));
+                obj = new Priority(result.getInt("priotity_id"),result.getString("name"));
 
             }
 
@@ -136,4 +153,8 @@ public class Priority {
         return obj;
     }
 
+    @Override
+    public String toString() {
+        return desc;
+    }
 }
