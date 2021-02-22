@@ -29,10 +29,12 @@ public class Controller {
     /**
      * Filter müssen UND- Verknüpft werden!
      */
-    public TextField filterNameTextField;   //filern nach name des Todos
-    public ComboBox<Status> filterStatusCombobox;   //filter nach status
-    public ComboBox<Priority> filterPrioritätCombobox;//filter nach priorität
+    public TextField filterNameTextField;   //filtern nach name des Todos
+    public ComboBox<Status> filterStatusCombobox;   //filtern nach status
+    public ComboBox<Priority> filterPrioritätCombobox;//filtern nach priorität
     private ArrayList<Ticket> allTicket;
+    Ticket selectedItem = null;
+
 
 
 
@@ -82,6 +84,8 @@ public class Controller {
 
         TicketController controller = (TicketController) loader.getController();
         controller.setTicket(ticketListView.getSelectionModel().getSelectedItem());
+
+    selectedItem = ticketListView.getSelectionModel().getSelectedItem();
     }
 
     public void newClicked(ActionEvent actionEvent) {
@@ -127,6 +131,11 @@ public class Controller {
     public void saveClicked(ActionEvent actionEvent) {
         //Wenn Ticket neu -> laden des Ticktes und hinzufügen zur Liste
         //Datei aktualisieren
+
+
+        if(selectedItem != null){
+            //selectedItem.name
+        }
     }
 
 
