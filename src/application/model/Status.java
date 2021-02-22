@@ -12,11 +12,11 @@ import java.sql.*;
 public class Status {
 
     public String StatusName;
-    public String StatusID;
+    public int StatusID;
 
-    public Status(String status_id, String name) {
-        this.StatusName = status_id;
-        this.StatusID = name;
+    public Status(int status_id, String name) {
+        this.StatusName = name;
+        this.StatusID = status_id;
 
     }
 
@@ -31,7 +31,7 @@ public class Status {
             ResultSet result = statement.executeQuery("SELECT  * FROM stati");
 
             while(result.next()){
-                Status s = new Status(result.getString("status_id"), result.getString("name"));
+                Status s = new Status(result.getInt("status_id"), result.getString("name"));
 
                 list.add(s);
 
@@ -93,6 +93,20 @@ public class Status {
             throwables.printStackTrace();
         }
     }
+    public void insert(){
+        try{
+            Connection connection = AccessDb.getConnection();
+
+            PreparedStatement statement = null;
+            statement = connection.prepareStatement("INSERT INTO stati (name) VALUES (?)");
+            statement.setString(1, StatusName);
+
+
+            statement.execute();
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+    }
 
     public void update(){
         try{
@@ -101,7 +115,7 @@ public class Status {
             PreparedStatement statement = null;
             statement = connection.prepareStatement("UPDATE stati SET name = ? WHERE status_id = ?");
             statement.setString(1, StatusName);
-            statement.setInt(2, Integer.parseInt(StatusID));
+            statement.setInt(2, Integer.parseInt(String.valueOf(StatusID)));
 
             statement.execute();
         }catch (SQLException throwables){
@@ -118,7 +132,7 @@ public class Status {
             ResultSet result = statement.executeQuery("SELECT * FROM stati WHERE status_id = " + id);
 
             if(result.next()) {
-                obj = new Status(result.getString("status_id"), result.getString("name"));
+                obj = new Status(result.getInt("status_id"), result.getString("name"));
 
             }
 

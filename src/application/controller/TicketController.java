@@ -41,7 +41,7 @@ public class TicketController {
 
 
             for (Status s : statusComboBox.getItems()) {
-                if (s.StatusID.equals(t.status.StatusID)) {
+                if (s.StatusID == (t.status.StatusID)) {
                     statusComboBox.getSelectionModel().select(s);
                     //statusComboBox.setSelectionModel(t.status.StatusName);
                     break;

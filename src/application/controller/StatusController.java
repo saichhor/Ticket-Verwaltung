@@ -33,7 +33,7 @@ public class StatusController {
             selectedItem = s;
         }
 
-        statusNummerTextField.setText(statusListView.getSelectionModel().getSelectedItem().StatusID);
+        statusNummerTextField.setText(String.valueOf(statusListView.getSelectionModel().getSelectedItem().StatusID));
         statusBeschreibungTextField1.setText(statusListView.getSelectionModel().getSelectedItem().StatusName);
     }
 
@@ -49,6 +49,12 @@ public class StatusController {
             statusListView.refresh();
 
             selectedItem.update(); // Aktualisiere DB
+        }else{
+
+            Status s = new Status(0, statusBeschreibungTextField1.getText());
+            s.insert();
+
+            statusListView.getItems().add(s);
         }
     }
 
